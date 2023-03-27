@@ -45,9 +45,9 @@
       font-variant: small-caps;    /* 浏览器会显示小型大写字母的字体。 */
     }
     .a{
-      font-size: 32px;
+      font-size: 35px;
       font-style: italic;          /* 斜体 */
-      text-align: right;           /* 所有文字靠右对齐 */
+      text-align: right;           /* 所有文字靠右对齐,justify为居中 */
     }
     .a b{
       color:purple;
@@ -59,7 +59,17 @@
       text-decoration:line-through underline;   /* 中划线和下划线，相应的还有上划线为overline （注：同时写两条线别分开写！！！） */
     }
     .d{
-      
+      text-align:justify;          /* justify为居中 */
+      text-indent:30px;            /* 第一行文字缩进（这条意思相当于第一个字开始往后推30个像素） */
+      letter-spacing:5px;          /* 文字或字母之间的间距 */
+      word-spacing:10px;           /* 词与词之间的间距 */
+      line-height:2；              /* 行高 */
+    }
+    .c span{
+      font-size: 150%;             /* .c里的所有span元素依次150%增大 */
+    }
+    .f{
+      white-space: pre;            /* 保留空格 pre类似于html里的pre效果，保留效果*/
     }
   </style>
 </head>
