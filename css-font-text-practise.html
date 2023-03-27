@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    /* 只能在这里写css，不能改变页面的HTML结构 */
+    h1{
+      font-family: 黑体;                 /* 字体选择 */
+      text-shadow: 2px 2px 0 gray;     /* 阴影 */
+      font-size: 35px;                    /* 字体大小（35个像素点） */
+    }
+    h1>span {
+      color:blue;                      /* 字体颜色 */
+    }
+    h3{
+      color:white;
+      text-shadow: 0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,
+      0 0 1px red,              /* 叠BUFF */
+      0 0 1px red,              /* 0 0 1px代表字体边位置 红色叠加起来加上白色字体形成中空字体*/
+      0 0 1px red,
+      0 0 1px red;                   
+      font-size: 55px;
+    }
+    p.b{
+      font-size: 40px;
+    }
+    input{
+      font: inherit;               /* 跟上面p.b连接，代表跟p.b的字体大小一样*/
+    }
+    h2{
+      text-transform: capitalize;  /* 全部英文为大写 */
+      font-family: Script;         /* 字体选择 */
+      font-variant: small-caps;    /* 浏览器会显示小型大写字母的字体。 */
+    }
+    .a{
+      font-size: 32px;
+      font-style: italic;          /* 斜体 */
+      text-align: right;           /* 所有文字靠右对齐 */
+    }
+    .a b{
+      color:purple;
+      text-decoration: underline;  /* 下划线 */
+      text-decoration-color: red;  /* 下划线的颜色 */
+
+    }
+    .a>span{
+      text-decoration:line-through underline;   /* 中划线和下划线，相应的还有上划线为overline （注：同时写两条线别分开写！！！） */
+    }
+    .d{
+      
+    }
+  </style>
+</head>
+<body>
+  <h1>大<span>喵</span></h1>
+  <h3>大<span>喵</span></h3>
+  <p class="b">
+    请输入序列号：
+    <input placeholder="我的字号会跟外面一样大" type="text"> <br>
+  </p>
+  <h2>
+    'Returnal' players need to take a break before a bug eats their save files
+    '篝火'玩家需要在游戏的 bug 吃掉他们的存档之前先休息一下
+  </h2>
+  <p class="a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure <b>aaa <span>suscipit</span> aaa</b> doloremque magnam delectus, reiciendis architecto ipsam nihil numquam <span>nesciunt sapiente, accusantium, dolore.</span> Culpa repudiandae incidunt delectus. Officia, veritatis voluptas accusantium.</p>
+  <p class="d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, autem, ad. Quos fugit quam, vitae doloribus quo quisquam aut iure! Exercitationem ea in voluptatibus a, perspiciatis libero, eum quod? Et!</p>
+
+  <p class="c">
+    <span>aa <span>bb <span>cc <span></span>dd</span></span></span>
+  </p>
+
+  <div class="f">
+    Lorem ipsum dolor sit amet, consectetur
+
+    adipisicing elit. Cumque,
+        quibusdam cupiditate ratione dolore nihil dolores,
+      consequuntur aliquam voluptas expedita minima labore,
+           a sapiente fuga magni voluptatibus porro cum eius tempore.
+  </div>
+</body>
+</html>
