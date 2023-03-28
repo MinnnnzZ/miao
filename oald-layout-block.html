@@ -7,40 +7,40 @@
   <title>Document</title>
   <style>
     .a {
-      background-color: red;
-      margin: 20px;
-      min-width:600px;
+      background-color: red;          /* 背景颜色为红色 */
+      margin: 20px;                      /* 边距为20px */
+      min-width:600px;                   /* 最小宽度为600px，主要为了网页大小缩小时让一部分文字消失*/
     }
     .a p{
-      margin: 40px;
+      margin: 40px;                      /* 边距为20px*/
     }
     .b{
-      padding: 0 10px;
-      max-width: 600px;
-      margin: auto;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      border: 2px solid;
-      box-sizing: border-box;
+      padding: 0 10px;                   /* 填充右侧距离为10px，顺序为从上开始顺时针计算 0 10px代表0 10px 0 0也就是右侧距离为10px */
+      max-width: 600px;                  /* 盒子最大宽度为600px 为了网页缩小时盒子内的部分文字缩进*/
+      margin: auto;                      /* 边距为浏览器计算的值*/
+      margin-top: 30px;                  /* 上边距为30px*/
+      margin-bottom: 30px;               /* 下边距为30px*/
+      border: 2px solid;                 /* 边框的线为2px 样式为线条*/
+      box-sizing: border-box;            /* 盒子的总值（宽度和高度）为自己设定的最大值，不会因为加了边框等情况而改变 */
     }
     .b p{
-      Overflow:auto;
-      height: 40px;
+      Overflow:auto;                     /* 显示不完的东西以滚动条的方式显示，auto只向上下，不向左右 */
+      height: 40px;                      /* 高度为40px，主要是为了上面的显示不完做的，其实不限制高度能显示完全*/
     }
     .c{
       background-color: pink;
       height: 50px;
     }
     .c:hover{
-      margin-left: -10px;
-      margin-right: -10px;
+      margin-left: -10px;               /*hover是上一章中鼠标移到此条上会做出改变，改变的内容在{}里面 */
+      margin-right: -10px;              /* 这里做出的改变是盒子左右都向外扩展10px，因为数值为负数，一般margin用在缩进边距上更多，详情看css权威指南173页负外边距 */
     }
 
     .d{
-      border: 50px solid orange;
-      width: 0;
+      border: 50px solid orange;     /* 设定盒子的边框为50px 线性 橘色 */
+      width: 0;                        /* 设定盒子内宽度为0 */
       margin:auto;
-      border-color: white white orange white
+      border-color: white white orange white        /* 设定盒子内颜色为 上白 右白 下橘 左白 */
     }
 
 
