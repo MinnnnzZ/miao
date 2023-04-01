@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 微软雅黑;
+      font-weight: bolder;
+      border: 1px solid black;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tt {
+      position: relative;
+      border: 1px solid black;
+      background-color: gold;
+      height: 50px;
+      width: 100vw;
+    }
+
+    .abs {
+      position: absolute;
+      background-color: burlywood;
+      width: 100px;
+      height: 50px;
+    }
+
+    .a {
+      left: 20px;
+    }
+
+    .b {
+      left: 140px;
+    }
+
+    .c {
+      left: 260px;
+    }
+
+    .d {
+      left: 380px;
+    }
+
+    .e {
+      left: 500px;
+    }
+
+    .js {
+      position: absolute;
+      background-color: burlywood;
+      width: 100px;
+      height: 160px;
+      top: 50px;
+      display: none;
+    }
+
+    .js>div {
+      height: 40px;
+    }
+
+    .a:hover .js {
+      display: block;
+    }
+
+    .gl:hover .jj {
+      display: block;
+    }
+
+    .jj {
+      position: absolute;
+      background-color: burlywood;
+      width: 600px;
+      left: 98px;
+      top: 0;
+      height: 200px;
+      display: none;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="tt">
+    <div class="abs a">德玛西亚
+      <div class="js">
+        <div class="gl">盖伦
+          <div class="jj">
+            作为一名自豪而高贵的勇士，盖伦将自己当做无畏先锋中的普通一员参与战斗。他既受到同袍手足的爱戴，也受到敌人对手的尊敬——尤其作为尊贵的冕卫家族的子嗣，他被委以重任，守卫德玛西亚的疆土和理想。他身披抵御魔法的重甲，手持阔剑，时刻准备着用正义的钢铁风暴在战场上正面迎战一切操纵魔法的狂人
+          </div>
+        </div>
+        <div class="lks">拉克丝</div>
+        <div class="jw">波比</div>
+        <div class="fan">菲奥娜</div>
+      </div>
+    </div>
+    <div class="abs b">诺克萨斯</div>
+    <div class="abs c">祖安</div>
+    <div class="abs d">皮尔吉沃特</div>
+    <div class="abs e">班德尔城</div>
+  </div>
+</body>
+
+</html>
