@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ios {
+      position: relative;
+      border-radius: 80px;
+      border: 1px solid;
+      width: 100px;
+      height: 50px;
+      box-sizing: border-box;
+      transition: 0.5s;
+      background-color: rgb(13, 255, 7, 0);
+      z-index: 1;
+    }
+
+    .switch {
+      position: absolute;
+      border-radius: 50px;
+      width: 44px;
+      height: 44px;
+      top: 2px;
+      left: 1px;
+      box-shadow: 0px 1px 4px gray;
+      background-color: white;
+      box-sizing: border-box;
+      z-index: 3;
+      transition: 0.4s;
+    }
+
+    .bg {
+      position: absolute;
+      border-radius: 80px;
+      width: 98px;
+      height: 48px;
+      box-sizing: border-box;
+      background-color: white;
+      z-index: 2;
+      transition: 0.4s;
+      left: 0px;
+      top: 0px;
+    }
+
+
+    .ios:active .bg {
+      transform: scale(0, 0);
+    }
+
+    .ios:active .switch {
+      left: 55px;
+      right: 1px;
+    }
+
+    .ios:active {
+      background-color: rgb(13, 255, 7, 1);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="ios">
+    <div class="switch"></div>
+    <div class="bg"></div>
+    <div class="cy"></div>
+  </div>
+</body>
+
+</html>
