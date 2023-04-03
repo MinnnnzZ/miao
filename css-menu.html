@@ -8,23 +8,24 @@
   <title>Document</title>
   <style>
     .js {
+      font-size: 0;
+    }
+
+    ul {
       padding: 0;
       list-style: none;
-      font-size: 0;
+      box-sizing: border-box;
     }
 
     .js ul {
       background-color: yellow;
       border: 1px black solid;
-      box-sizing: border-box;
-      padding: 0;
     }
 
-    .js li {
+    li {
       background-color: yellow;
       border: 1px black solid;
       box-sizing: border-box;
-      padding: 0;
     }
 
     .js>li {
@@ -53,7 +54,7 @@
       padding: 0;
       display: none;
       position: absolute;
-      left: 0;
+      left: -1px;
       top: 100%
     }
 
@@ -64,7 +65,7 @@
     .js ul ul {
       left: 100%;
       width: 600px;
-      top: 0;
+      top: -1px;
     }
 
   </style>
