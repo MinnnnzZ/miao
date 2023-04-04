@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ht {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      border: 1px solid;
+      overflow: hidden;
+
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      height: 100px;
+
+    }
+
+    img:hover {
+      left: -2800px;
+      transition: 1s steps(28);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="ht">
+    <img src="heart.png" alt="">
+  </div>
+</body>
+
+</html>
