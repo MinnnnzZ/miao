@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      opacity: 0;
+    }
+
+    input {
+      position: relative;
+      display: none;
+    }
+
+    input:nth-child(1):checked~.img img:nth-child(1) {
+      opacity: 1;
+    }
+
+    input:nth-child(2):checked~.img img:nth-child(2) {
+      opacity: 1;
+    }
+
+    input:nth-child(3):checked~.img img:nth-child(3) {
+      opacity: 1;
+    }
+
+    input:nth-child(1):checked~.twitch label:nth-child(1) {
+      background-color: red;
+    }
+
+    input:nth-child(2):checked~.twitch label:nth-child(2) {
+      background-color: red;
+    }
+
+    input:nth-child(3):checked~.twitch label:nth-child(3) {
+      background-color: red;
+    }
+
+    .twitch label {
+      height: 20px;
+      width: 20px;
+      border-radius: 100px;
+      background-color: white;
+      display: inline-block;
+      z-index: 100;
+      position: relative;
+      margin: 0 10px;
+      border: 1px solid grey;
+      left: 600px;
+      top: 720px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="main">
+
+    <input type="radio" name="a" id="t1" checked>
+    <input type="radio" name="a" id="t2">
+    <input type="radio" name="a" id="t3">
+
+    <div class="img">
+      <img src="1.jpg">
+      <img src="2.jpg">
+      <img src="3.jpg">
+    </div>
+
+    <div class="twitch">
+      <label for="t1"></label>
+      <label for="t2"></label>
+      <label for="t3"></label>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>
