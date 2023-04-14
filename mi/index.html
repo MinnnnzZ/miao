@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小米商城 - Xiaomi 13、Redmi K60、MIX FOLD 2，小米电视官方网站</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    /* 引用小米外部字体*/
+    @font-face {
+      font-family: xiaomizt;
+      src: url(./xiaomiziti.ttf)
+    }
+
+    .tszt {
+      font-family: xiaomizt;
+      font-size: 20px;
+      line-height: 20px;
+      vertical-align: -4px;
+    }
+
+    button {
+      font-family: xiaomizt;
+      font-size: 20px;
+    }
+
+
+    /* 顶部导航栏背景颜色 */
+    .bg {
+      height: 40px;
+      width: 100%;
+      background-color: #333333;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    /* 顶部导航栏样式 */
+
+    .zt {
+      width: 1226px;
+      margin: 0 auto;
+    }
+
+    /* 去掉ul li前面的点 */
+
+    ul {
+      list-style: none;
+    }
+
+    /* 去除所有a标签下划线*/
+
+    a {
+      text-decoration: none;
+    }
+
+    /* 设置menu1内 li为浮动以及高度 */
+    .menu1 li {
+      line-height: 40px;
+      float: left;
+    }
+
+    /* 设置menu2内 li为浮动以及高度 */
+    .menu2 li {
+      float: left;
+      line-height: 40px;
+    }
+
+    /* 设置menu最小宽度以免出现缩视口时总是跳行*/
+
+    .menu1 {
+      min-width: 790px;
+    }
+
+    /* 如上并且设置menu2的具体位置 */
+
+    .menu2 {
+      margin-left: 960px;
+      min-width: 300px;
+    }
+
+    /* 设置背景内的a标签的字体颜色*/
+    .bg a {
+      color: #b0b0b0;
+    }
+
+    /* 设置menu1内a标签被选中时的颜色*/
+    .menu1 a:hover {
+      color: white;
+    }
+
+    /* 设置menu2内除开购物车之外的a标签被选中时的颜色*/
+    .menu2 .zt:hover {
+      color: white;
+    }
+
+    /* 给下载app设置定位元素以方便二维码展出*/
+    .menu .download {
+      position: relative;
+    }
+
+    /* 二维码样式*/
+    .erweima {
+      position: absolute;
+      height: 0px;
+      width: 130px;
+      box-shadow: 0 0 4px gray;
+      transition: 0.8s;
+      visibility: hidden;
+      color: black;
+      background-color: white;
+      text-align: center;
+      font-size: 14px;
+      overflow: hidden;
+      margin-left: -30px;
+      z-index: 9999;
+    }
+
+    /* 二维码的图片具体大小以及在框内位置*/
+    .erweima img {
+      height: 90px;
+      width: 90px;
+      margin: 15px 20px -20px 20px;
+    }
+
+    /* 在选中二维码时弹出二维码框*/
+    .download:hover .erweima {
+      height: 150px;
+      visibility: visible;
+    }
+
+    /* 设置购物车的样式 */
+    .shop {
+      margin-left: 25px;
+      background-color: #424242;
+      width: 120px;
+      text-align: center;
+    }
+
+    /* 设置购物车为定位方便之后弹出框使用*/
+    .shop {
+      position: relative;
+    }
+
+    /* 设置购物车内的样式*/
+    .sp {
+      position: absolute;
+      height: 0px;
+      width: 320px;
+      background-color: white;
+      box-shadow: 0 0 4px gray;
+      right: 0;
+      color: black;
+      visibility: hidden;
+      transition: 0.8s;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* 设置选中购物车时弹出购物车的效果*/
+    .shop:hover .sp {
+      visibility: visible;
+      height: 100px;
+    }
+
+    /* 设置选中购物车时背景颜色的变化*/
+    .shop:hover {
+      background-color: white;
+    }
+
+    /* 设置选中购物车时购物车字体颜色的变化*/
+
+    .shop:hover a {
+      color: rgb(255, 103, 0);
+    }
+
+    /* 设置下面所有内容的总样式*/
+    .main {
+      width: 1226px;
+      margin: 0 auto;
+    }
+
+    /* 第一块的高度*/
+    .top1 {
+      height: 100px;
+    }
+
+    /* 小米图标框的位置 */
+    .xiaomi {
+      margin-top: 20px;
+      width: 55px;
+      float: left;
+    }
+
+    /*小米图标的大小 */
+    .xiaomi img {
+      width: 55px;
+    }
+
+    /*小米图标点击变小的效果*/
+    .xiaomi img:active {
+      height: 45px;
+      width: 45px;
+    }
+
+    /* 横版框主体 */
+    .Navigation {
+      list-style: none;
+      height: 100px;
+      margin-left: 160px;
+      float: left;
+    }
+
+    .Navigation li {
+      float: left;
+      margin-left: 20px;
+      margin-top: 38px;
+      cursor: pointer;
+    }
+
+    .Navigation li:hover {
+      color: rgb(255, 103, 0);
+    }
+
+    /*搜索框主体*/
+
+    .ss {
+      float: right;
+      margin-top: 25px;
+    }
+
+    .ss input {
+      height: 50px;
+      width: 240px;
+      float: left;
+      border: 1px solid gray;
+    }
+
+    .ss button {
+      border: 1px solid gray;
+      height: 50px;
+      width: 50px;
+      float: right;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .ss ul {
+      width: 240px;
+      border: 1px solid rgb(255, 103, 0);
+      background-color: white;
+      font-size: 14px;
+      margin-top: 50px;
+      visibility: hidden;
+    }
+
+    .ss li {
+      height: 30px;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .ss ul a {
+      color: black;
+      margin-left: 20px;
+    }
+
+    .ss input:focus {
+      outline: none;
+      border: 1px solid rgb(255, 103, 0);
+    }
+
+    .ss input:focus+button {
+      border: 1px solid rgb(255, 103, 0);
+    }
+
+    .ss input:focus+button+ul {
+      visibility: visible;
+    }
+
+    button:hover {
+      background-color: rgb(255, 103, 0);
+      color: white;
+    }
+
+    .ss li:hover {
+      background-color: rgb(250, 250, 250);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="bg">
+    <div class="zt">
+      <ul class="menu1">
+        <li><a href="#">小米官网</a><span>丨</span></li>
+        <li><a href="#">小米商城</a><span>丨</span></li>
+        <li><a href="#">MIUI</a><span>丨</span></li>
+        <li><a href="#">Iot</a><span>丨</span></li>
+        <li><a href="#">云服务</a><span>丨</span></li>
+        <li><a href="#">天星数科</a><span>丨</span></li>
+        <li><a href="#">有品</a><span>丨</span></li>
+        <li><a href="#">小爱开放平台</a><span>丨</span></li>
+        <li><a href="#">企业团购</a><span>丨</span></li>
+        <li><a href="#">资质证照</a><span>丨</span></li>
+        <li><a href="#">协议规则</a><span>丨</span></li>
+
+        <li class="download">
+          <a href="#">
+            下载app
+            <div class="erweima">
+              <img src="./erweima.png">
+              小米商城app
+            </div>
+          </a>
+          <span>丨</span>
+        </li>
+
+
+        <li><a href="#">Select Location</a></li>
+      </ul>
+
+
+      <ul class="menu2">
+        <li><a href="#" class="zt">登录</a><span>丨</span></li>
+        <li><a href="#" class="zt">注册</a><span>丨</span></li>
+        <li><a href="#" class="zt">消息通知</a></li>
+
+        <li class="shop">
+          <a href="#">
+            <span class="tszt">
+              &#xe60c
+            </span>
+            购物车
+          </a>
+          <div class="sp">
+            购物车中还没有商品，赶紧选购吧！
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="main">
+
+
+    <div class="top1">
+
+      <div class="xiaomi">
+        <a href="#"><img src="xiaomi.png"></a>
+      </div>
+
+      <ul class="Navigation">
+        <li>xiaomi手机</li>
+        <li>Redmi手机</li>
+        <li>电视</li>
+        <li>笔记本</li>
+        <li>平板</li>
+        <li>家电</li>
+        <li>路由器</li>
+        <li>服务中心</li>
+        <li>社区</li>
+      </ul>
+
+      <div class="ss">
+        <input type="text">
+        <button type="submit">&#xe63a</button>
+        <ul>
+          <li><a href="#">全部商品</a></li>
+          <li><a href="#">笔记本</a></li>
+          <li><a href="#">空调</a></li>
+          <li><a href="#">手机</a></li>
+          <li><a href="#">净水器</a></li>
+          <li><a href="#">耳机</a></li>
+          <li><a href="#">电视</a></li>
+          <li><a href="#">冰箱</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+</body>
+
+</html>
