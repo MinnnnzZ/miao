@@ -215,7 +215,7 @@
       width: 45px;
     }
 
-    /* 横版框主体 */
+    /* 横版大框主体 */
     .Navigation {
       list-style: none;
       height: 100px;
@@ -234,6 +234,49 @@
       color: rgb(255, 103, 0);
     }
 
+    .Navigation li:hover .phone>div {
+      color: black;
+    }
+
+    .xiaomiphone {
+      position: absolute;
+      left: 0;
+      top: 140px;
+      width: 100vw;
+      height: 0px;
+      background-color: white;
+      border-top: 1px solid rgb(212, 212, 212);
+      border-bottom: 1px solid rgb(212, 212, 212);
+      visibility: hidden;
+      transition: 0.8s;
+      overflow: hidden;
+    }
+
+    .Navigation li:hover .xiaomiphone {
+      visibility: visible;
+      height: 230px;
+    }
+
+    .phone1 {
+      width: 1226px;
+      margin: 20px auto 50px auto;
+    }
+
+    .phone1 div {
+      width: 204px;
+      border-right: 1px rgb(212, 212, 212) solid;
+      float: left;
+      text-align: center;
+    }
+
+    .phone1 div+div {
+      width: 204px;
+    }
+
+    .phone1 div img {
+      margin-left: 5px;
+    }
+
     /*搜索框主体*/
 
     .ss {
@@ -245,11 +288,11 @@
       height: 50px;
       width: 240px;
       float: left;
-      border: 1px solid gray;
+      border: 1px solid rgb(212, 212, 212);
     }
 
     .ss button {
-      border: 1px solid gray;
+      border: 1px solid rgb(212, 212, 212);
       height: 50px;
       width: 50px;
       float: right;
@@ -297,7 +340,7 @@
     }
 
     .ss li:hover {
-      background-color: rgb(250, 250, 250);
+      background-color: rgb(212, 212, 212);
     }
 
   </style>
@@ -370,7 +413,31 @@
       </div>
 
       <ul class="Navigation">
-        <li>xiaomi手机</li>
+        <li>
+          xiaomi手机
+          <div class="xiaomiphone">
+            <div class="phone1">
+
+              <div>
+                <img src="miphone.webp">
+                xiaomi
+                <br>
+                3999元
+              </div>
+              <div>
+                <img src="miphone.webp">
+                <a>xiaomi</a>
+                <br>
+                3999元
+              </div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+          </div>
+        </li>
         <li>Redmi手机</li>
         <li>电视</li>
         <li>笔记本</li>
