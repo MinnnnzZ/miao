@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      width: 100px;
+      border: 1px red solid;
+    }
+
+    div>div {
+      height: 20px;
+      width: 20px;
+      background-color: aqua;
+    }
+
+    .a>div {
+      margin: 40px auto;
+    }
+
+    .b {
+      position: relative;
+    }
+
+    .b>div {
+      position: absolute;
+      left: 40%;
+      top: 40%;
+    }
+
+    .c {
+      position: relative;
+    }
+
+    .c>div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .d {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .e {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+    }
+
+    .e>div {
+      grid-row: 3;
+      grid-column: 3;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="a">
+    <div></div>
+  </div>
+  <div class="b">
+    <div></div>
+  </div>
+  <div class="c">
+    <div></div>
+  </div>
+  <div class="d">
+    <div></div>
+  </div>
+  <div class="e">
+    <div></div>
+  </div>
+</body>
+
+</html>
