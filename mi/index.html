@@ -718,12 +718,37 @@
       background-color: rgb(255, 103, 0);
     }
 
-    .photoall img {
-      box-shadow: 0 0 2px grey;
+
+    .phonetp li:hover {
+      transform: translate(0, -2px);
+      box-shadow: 0 0 4px gray;
     }
 
-    .photoall img:hover {
-      transform: translate(0, -2px);
+
+    .phonetp ul{
+      height:614px;
+      display:grid;
+      gap:14px;
+      grid-template-columns: repeat(5,234px);
+      grid-template-rows: repeat(2,300px);
+    }
+
+    .phonetp li:nth-child(1){
+      grid-row: 1/3;
+    }
+
+    .phonetp li:nth-child(1) img{
+      height: 614px;
+    }
+
+    .phonetp li{
+      box-shadow: 0 0 2px gray;
+    }
+
+    .phonetp li:nth-child(n+2) img{
+      height: 160px;
+      margin-left: 35px;
+      padding:20px;
     }
 
   </style>
@@ -1140,10 +1165,17 @@
           </div>
 
           <div class="phonetp">
-            <img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d91bb6cf7da0947e8a6e50e03f4daf06.jpg?thumb=1&w=234&h=614&f=webp&q=90"
-              alt="">
-
+            <ul>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d91bb6cf7da0947e8a6e50e03f4daf06.jpg?thumb=1&w=234&h=614&f=webp&q=90"></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b046feca0a7bb3f7b961a9690babb1b.jpg?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a6cec580260ceb20ae6a885c2c65c611.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f37dd30477e7ba040c7fb69c31ad8bf3.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202212251443_29b17941a7365948446bd193011d9241.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202211292351_92aba2c69123166a74ba2e2b525b1ae2.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aa047170a22d9f0852254aa36df5f5f0.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/94c6497b70f2e881460cb232082a0da6.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+                <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210262033_ef39fca0e37395d07682124770fd3ad9.png?thumb=1&w=300&h=300&f=webp&q=90" alt=""></li>
+              </ul>
           </div>
         </div>
       </div>
