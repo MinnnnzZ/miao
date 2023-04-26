@@ -328,13 +328,13 @@
     var x=+prompt()
 
     if(0<=x && x<5){
-        console.log(-x+2.5)
+        console.log((-x+2.5).toFixed(3))
     }
     else if(5<=x && x<10){
-        console.log(2-1.5*(x-3)*(x-3))
+        console.log((2-1.5*(x-3)*(x-3)).toFixed(3))
     }
     else if(10<=x && x<20){
-        console.log(x/2-1.5)
+        console.log((x/2-1.5).toFixed(3))
     }
 
 </script>
@@ -384,6 +384,24 @@
 
 </script>
 
-<script id="ch0104/16" type="">
-    
+<script id="ch0104/16" type="1">
+    var a=+prompt()
+    var b=+prompt()
+    var c=+prompt()
+
+    if(a*a==b*b+c*c){
+        console.log('yes')
+    }
+
+    else if(b*b==a*a+c*c){
+        console.log('yes')
+    }
+
+    else if(c*c==a*a+b*b){
+        console.log('yes')
+    }
+
+    else{
+        console.log('no')
+    }
 </script>
