@@ -429,8 +429,8 @@
 </script>
 
 <script id="ch0104/19" type="">
-    var a=+prompt('整数')
-    var b=+prompt('整数')
+    var a=+prompt('被除数')
+    var b=+prompt('除数')
     var c=prompt('操作符')
 
     if(c=='+'){
@@ -446,12 +446,19 @@
     }
 
     else if(c=='/'){
-        console.log(a/b)
+        if(b==0){
+        console.log('Divided by zero!')
+        }
+        else{
+            console.log(a/b)
+        }
     }
 
-    else{
+    else {
         console.log('Invalid operator!')
     }
+
+
 
 </script>
 
