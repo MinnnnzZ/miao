@@ -405,3 +405,65 @@
         console.log('no')
     }
 </script>
+
+<script id="ch0104/17" type="1">
+    var n=+prompt()
+    if(n%4==0 && n%100!==0 && n%400==0 && n%3200!==0){
+        console.log('Y')
+    }
+    else{
+        console.log('N')
+    }
+</script>
+
+<script id="ch0104/18" type="1">
+    var x=+prompt()
+    var y=+prompt()
+
+    if(x>=-1 && x<=1 && y>=-1 && y<=1){
+        console.log('yes')
+    }
+    else{
+        console.log('no')
+    }
+</script>
+
+<script id="ch0104/19" type="1">
+    var a=+prompt('整数')
+    var b=+prompt('整数')
+    var c=prompt('操作符')
+
+    if(c=='+'){
+        console.log(a+b)
+    }
+
+    else if(c=='-'){
+        console.log(a-b)
+    }
+
+    else if(c=='*'){
+        console.log(a*b)
+    }
+
+    else if(c=='/'){
+        console.log(a/b)
+    }
+
+</script>
+
+<script id="ch0104/20" type="1">
+
+</script>
+
+<script id="ch0104/21" type="">
+    var n=+prompt()
+    var x=+prompt()
+    var y=+prompt()
+
+    if(y%x==0){
+        console.log(n-y/x)
+    }
+    else if(y%x!==0){
+        console.log(n-Math.ceil(y/x))
+    }
+</script>
