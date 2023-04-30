@@ -719,13 +719,64 @@
 <script id="ch0105/16" type="1">
     var N=+prompt()
     var K=+prompt()
+    var 房价=200
+    var 资金=N
+    var 年数=1
 
-    for(var year=0;)
+    for(var y=1;y<=年数;y++){
+         if(房价*K/100>50){
+            console.log('Impossible')
+        }
+         else if(N*年数<房价){
+            年数++
+            房价=房价*(1+K/100)
+        }
+        else{console.log(年数)}
+    }
+
+        
+
+
+    
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/17" type="1">
+    debugger
+    var a=0
+    var b=1
+    var c=1
+    var k=+prompt()
 
-<script id="" type=""></script>
+    for(var d=0;d<k;d++){
+        a=b
+        b=c
+        c=a+b
+    }
+    console.log(a)
+</script>
+
+<script id="ch0105/18" type="">
+    var n=+prompt()
+
+    for(var c=0;c<(n-1);c++){
+         var n = + prompt(n)
+  var i0 = + prompt()
+  var c0 = + prompt()
+  for (var r = 1; r <= (n - 1); r ++) {
+    var i = + prompt()
+    var c = + prompt()
+    if ((c / i - c0 / i0) * 100 > 5) {
+      console.log('better')
+    }
+    else if ((c0 / i0 - c / i) * 100 > 5) {
+      console.log('worse')
+    }
+    else if (Math.sqrt((c0 / i0 - c / i) ** 2) * 100 < 5) {
+      console.log('same')
+    }
+  }
+    }
+</script>
 
 <script id="" type=""></script>
 
