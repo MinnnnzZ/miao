@@ -609,15 +609,16 @@
 </script>
 
 <script id="ch0105/08" type="1">
-    var a=(sides-2)*180
-    var c=0
-    while(c<sides-1){
-        var angle=+prompt()
-        a=a-angle
-        c=c+1
-    }
-
-    console.log(a)
+     var n= +prompt('')
+  var counter= 0 
+  var sum = 0
+  while (counter < n-1){
+    var a= +prompt('')
+    sum=sum + a
+    var b=(((n - 2) * 180) - sum)
+   counter=counter+1
+  }
+  console.log(b)
 </script>
 
 <script id="ch0105/09" type="1">
