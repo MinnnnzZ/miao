@@ -428,7 +428,7 @@
     }
 </script>
 
-<script id="ch0104/19" type="">
+<script id="ch0104/19" type="1">
     var a=+prompt('被除数')
     var b=+prompt('除数')
     var c=prompt('操作符')
@@ -494,3 +494,286 @@
         console.log(n-Math.ceil(y/x))
     }
 </script>
+
+<script id="ch0105/01" type="1">
+    var n=+prompt('学生人数')
+    var all=0
+
+    for(var num=1;num<=n;num++){
+        var age=+prompt('请输入年龄')
+        all=all+age
+    }
+
+    console.log((all/n).toFixed(2))
+
+</script>
+
+<script id="ch0105/02" type="1">
+    var m=12
+    var balance=0
+
+    for(var num=1;num<=m;num++){
+        var money=+prompt('每个月结余')
+        balance=balance+money
+    }
+
+    console.log((balance/m).toFixed(2))
+</script>
+
+<script id="ch0105/03" type="1">
+    var n=+prompt('样本容量')
+    var s=0
+
+    for(var a=1;a<=n;a++){
+        var y=+prompt('样本数据')
+        s=s+y
+    }
+
+    console.log((s/n).toFixed(4))
+</script>
+
+<script id="ch0105/04" type="1">
+    var n=+prompt('需要的整数个数')
+    var sum=0
+    var count=0
+
+    while(count<n){
+        var num=+prompt('请输入整数');
+        sum=num+sum;
+        count=count+1
+    }
+
+    console.log(sum,(sum/n).toFixed(5))
+</script>
+
+<script id="ch0105/05" type="1">
+    var n=+prompt()
+    var c=0
+    var max=0
+    while(c<n){
+        var score=+prompt()
+        if(score>max){
+            max=score
+        }
+        c=c+1
+    }
+
+    console.log(max)
+</script>
+
+<script id="ch0105/06" type="1">
+    var n=+prompt()
+      c=0
+    //之所以取以下两个值是因为，第一个值肯定是比最大值的初始值要大，也要比最小值的初始值要小
+    //因为截止到第一个值时，它即是最大值也是最小值
+    var max=-Infinity
+    var min=Infinity
+
+    while(c<n){
+        var score=+prompt()
+        if(score>max){
+            max=score
+        }
+
+        if(score<min){
+            min=score
+        }
+        
+        c=c+1
+    }
+
+    console.log(max-min)
+</script>
+
+<script id="ch0105/07" type="1">
+    var day = +prompt()
+    var c=0
+
+    var allAu=0
+    var allAg=0
+    var allCu=0
+
+  while(c<day){
+    var Au=+prompt()
+    var Ag=+prompt()
+    var Cu=+prompt()
+
+    allAu=allAu+Au
+    allAg=allAg+Ag
+    allCu=allCu+Cu
+
+    c=c+1
+    }
+</script>
+
+<script id="ch0105/08" type="1">
+    var a=(sides-2)*180
+    var c=0
+    while(c<sides-1){
+        var angle=+prompt()
+        a=a-angle
+        c=c+1
+    }
+
+    console.log(a)
+</script>
+
+<script id="ch0105/09" type="1">
+    var m=+prompt()
+    var n=+prompt()
+
+    var sum=0
+    var c=m
+    while(c<=n){
+        if(c%2==1){
+        sum=sum+c
+        }
+        c=c+1
+    }
+
+    console.log(sum)
+</script>
+
+<script id="ch0105/10" type="1">
+    var m=+prompt()
+    var n=+prompt()
+
+    var sum=0
+    var c=m
+    while(c<=n){
+        if(c%17==0){
+            sum=sum+c
+        }
+        c=c+1
+    }
+
+    console.log(sum)
+
+</script>
+
+<script id="ch0105/11" type="1">
+    var k=+prompt()
+    var a=0
+    var b=0
+    var c=0
+
+    for(var num=1;num<=k;num++){
+        var z=+prompt()
+        if(z==1){
+            a=a+1
+        }
+        if(z==5){
+            b=b+1
+        }
+        if(z==10){
+            c=c+1
+        }
+    }
+    console.log(a,b,c)
+</script>
+
+<script id="ch0105/12" type="1">
+    var N=+prompt()
+    var m=+prompt()
+    var sum=0
+
+    for(var num=1;num<=N;num++){
+        var a=+prompt()
+        if(a==m){
+            sum=sum+1
+        }
+    }
+
+    console.log(sum)
+</script>
+
+<script id="ch0105/13" type="1">
+    var a=+prompt()
+    var n=+prompt()
+
+    console.log(a**n)
+</script>
+
+<script id="ch0105/14" type="1">
+    var x=+prompt()
+    var n=+prompt()
+
+    console.log((x*Math.pow((1+0.001),n)).toFixed(4))
+</script>
+
+<script id="ch0105/15" type="1">
+    var R=+prompt()
+    var M=+prompt()
+    var Y=+prompt()
+
+    var ll=Math.pow(1+(R/100),Y)
+
+    var money=Math.floor(M*ll)
+
+    console.log(money)
+</script>
+
+<script id="ch0105/16" type="">
+    var N=+prompt()
+    var K=+prompt()
+
+    for(var year=0;)
+</script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
+
+<script id="" type=""></script>
