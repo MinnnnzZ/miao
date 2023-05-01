@@ -940,19 +940,112 @@
     }while(n>0)
 </script>
 
-<script id="ch0105/29" type=""></script>
+<script id="ch0105/29" type="1">
+  var m = +prompt()
+  var res = ''
+  var a
+  var n = m
+  var count = 1
+  do {
+    if (n < 0) {
+      n = -m
+    }
+    a = n % 10
+    n = (n - a) / 10
+    if (count == 1 && a == 0) {
+      a = ""
+    }
+    res = res + a
+    count++
+  } while (n > 0)
 
-<script id="" type=""></script>
+  if (m < 0) {
+    console.log("-" + res)
+  } else {
+    console.log(res)
+  }
 
-<script id="" type=""></script>
+    
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/30" type="1">
+    var m=+prompt()
+    var k=+prompt()
+    var a = 0
+    calc = 0
+  do {
+    a = m % 10
+    if (a == 3) {
+      calc++
+    }
+    m = (m - a) / 10
+  } while (m > 0)
 
-<script id="" type=""></script>
+  if (calc == k) {
+    console.log("YES")
+  } else {
+    console.log("NO")
+  }
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/31" type="1">
+    var N=+prompt()
+    var M=+prompt()
+     var calc = 0
+     var o = "1"
+  for (var count = 2; count <= N; count++) {
+    for (var p = 2; p <= count && p <= M; p++) {
+      if (count % p == 0) {
+        calc++
+      }
+    }
+    if (calc % 2 == 0) {
+      o += "," + count
+    }
+    calc = 0
+  }
+  console.log(o)
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/32" type="1">
+  var n = +prompt()
+  var p = 1
+  var q = 2
+  var sum = 0
+
+  for(var i=0;i<n;i++) {
+    sum = sum + q / p
+    q = q + p
+    p = q - p
+  }
+  console.log(sum.toFixed(4))
+</script>
+
+<script id="ch0105/33" type="1">
+    var n=+prompt()
+    var sum=0
+    for(var a=1;a<=n;a++){
+        sum+=(-1)**(a-1)*(1/a)
+    }
+    console.log(sum.toFixed(4))
+</script>
+
+<script id="ch0105/34" type="1">
+    var n=+prompt()
+    var sum=0
+    for(let a=1;a<=n;a++){
+        var sun=1
+        for(var j=1;j<=a;j++){
+            sun=sun*j
+        }
+        sum+=sun
+    }
+    console.log(sum)
+</script>
+
+<script id="ch0105/35" type="">
+    
+</script>
 
 <script id="" type=""></script>
 
