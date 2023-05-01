@@ -1097,7 +1097,24 @@
   console.log(num);
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/40" type="1">
+    var n=+prompt
+    var sum=0
+
+    for(var a=1;a<=n;a++){
+        var num=a
+        while(true){
+            if(num==0){
+                break
+            }
+            else if(num%10==1){
+                sum++
+            }
+            num=Math.trunc(num/10)
+        }
+    }
+    console.log(sum)
+</script>
 
 <script id="" type=""></script>
 
