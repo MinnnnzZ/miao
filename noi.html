@@ -901,13 +901,37 @@
     }
 </script>
 
-<script id="ch0105/26" type="">
-    
+<script id="ch0105/26" type="1">
+    var n=+prompt()
+    var result=0
+
+    for(var x=0;x<n;x++){
+        var num=+prompt()
+        var a=num%10
+        var b=Math.floor(num/1000)
+        var c=(num%1000-num%100)/100
+        var d=(num%100-num%10)/10
+
+        if(a-b-c-d>0){
+            result++
+        }
+    }
+    console.log(result)
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/27" type="1">
+    var k=+prompt()
+    var s=0
+    for(var n=1 ;n++){
+        S+=1/n
+        if(s>k){
+            console.log(n)
+            break
+        }
+}
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/28" type=""></script>
 
 <script id="" type=""></script>
 
