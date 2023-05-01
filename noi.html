@@ -884,11 +884,26 @@
     console.log(max)
 </script>
 
-<script id="ch0105/25" type="">
+<script id="ch0105/25" type="1">
+    for(var n=81;n<=342;n++){
+        var a7=n%7
+        var b7=(n-a7)/7%7
+        var c7=(n-b7*7-a7)/7/7%7
 
+        var a9=n%9
+        var b9=(n-a9)/9%9
+        var c9=(n-b9*9-a9)/9/9%9
+
+        if(a7==c9&&b7==b9&&c7==a9){
+            console.log(n,''+c7+b7+a7,''+c9+b9+a9)
+            break
+        }
+    }
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/26" type="">
+    
+</script>
 
 <script id="" type=""></script>
 
