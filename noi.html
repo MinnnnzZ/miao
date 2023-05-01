@@ -1067,13 +1067,35 @@
   console.log(num.toFixed(2));
 </script>
 
-<script id="ch0105/37" type="">
-    
+<script id="ch0105/37" type="1">
+    var M=prompt()
+    var N=prompt()
+    var X=prompt()
+    n=N
+    for(var a=1;a<=M;a++){
+        N+=Math.floor(M/n)
+        X=X-M
+        if(X==0){
+            console.log(N)
+            break
+        }
+    }
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/38" type="?">
 
-<script id="" type=""></script>
+</script>
+
+<script id="ch0105/39" type="1">
+  var n = +prompt('N(<100)')
+  var num = 0
+
+  for (var a = 1; a <= n; a++) {
+    if(a % 7 != 0 && a % 10 != 7 && Math.trunc(a / 10) != 7 )
+    sum += a ** 2
+  }
+  console.log(num);
+</script>
 
 <script id="" type=""></script>
 
