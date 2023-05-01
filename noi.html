@@ -817,7 +817,7 @@
     console.log('End')
 </script>
 
-<script id="ch0105/22" type="">
+<script id="ch0105/22" type="1">
      var count = 1, sum = 0, calc = 0, save = 0
   while (count <= 12) {
     var p = +prompt("")
@@ -840,11 +840,49 @@
   }
 </script>
 
-<script id="ch0105/23" type="">
-    var 总量=
+<script id="ch0105/23" type="1">
+    var m=+prompt()
+    var n=+prompt()
+    var calc=0
+    for(people=0;people<n;people++){
+        var remove=+prompt()
+
+        if(m-remove>=0){
+           m=m-remove 
+        }else{
+           calc=calc+1
+        }
+    }
+    console.log(calc)
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/24" type="1">
+    var n=+prompt()
+    var max=5
+    var normal
+    var time=0
+
+    for(var i=0;i<n;i++){
+        var high=+prompt()
+        var low=+prompt()
+
+        if(high<=140&&high>=90&&low<=90&&low>=60){
+            normal=true
+        }else{
+            normal=false
+        }
+
+        if(normal){
+            time++
+            if(time>max){
+                max=time
+            }
+        }else{
+            time=0
+        }
+    }
+    console.log(max)
+</script>
 
 <script id="" type=""></script>
 
