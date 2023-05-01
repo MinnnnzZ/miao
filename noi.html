@@ -1068,18 +1068,23 @@
 </script>
 
 <script id="ch0105/37" type="1">
-    var M=prompt()
-    var N=prompt()
-    var X=prompt()
-    n=N
-    for(var a=1;a<=M;a++){
-        N+=Math.floor(M/n)
-        X=X-M
-        if(X==0){
-            console.log(N)
-            break
-        }
+  var m = +prompt()
+  var n = +prompt()
+  var x = +prompt()
+  var power = 0
+  while(x - Math.ceil(m / n) >= 0){
+    x = x - Math.ceil(m / n)
+    power = m
+    while(power != 0){
+      if(power - n >= 0){
+        power = power - n
+        n ++
+      }else{
+        power = 0
+      }
     }
+  }
+  console.log(n);
 </script>
 
 <script id="ch0105/38" type="?">
