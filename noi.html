@@ -755,38 +755,95 @@
     console.log(a)
 </script>
 
-<script id="ch0105/18" type="">
+<script id="ch0105/18" type="1">
+        var n = +prompt("例数")
+        var x1 = +prompt("鸡尾酒总人数")
+        var y1 = +prompt("鸡尾酒治愈人数")
+        var m = y1 / x1
+        for(i = 1; i < n ; i++){
+          var x = +prompt("其他总人数")
+          var y = +prompt("其他治愈人数")
+          var z = y / x
+          if(z - m > 0.05){
+            console.log("better");
+          }else if(m - z > 0.05){
+            console.log("worse");
+          }else{
+            console.log("same");
+          }
+        }
+</script>
+
+<script id="ch0105/19" type="1">
+    // debugger
     var n=+prompt()
 
-    for(var c=0;c<(n-1);c++){
-         var n = + prompt(n)
-  var i0 = + prompt()
-  var c0 = + prompt()
-  for (var r = 1; r <= (n - 1); r ++) {
-    var i = + prompt()
-    var c = + prompt()
-    if ((c / i - c0 / i0) * 100 > 5) {
-      console.log('better')
-    }
-    else if ((c0 / i0 - c / i) * 100 > 5) {
-      console.log('worse')
-    }
-    else if (Math.sqrt((c0 / i0 - c / i) ** 2) * 100 < 5) {
-      console.log('same')
-    }
-  }
+    for(a=0;a<n;a++){
+        var x=+prompt()
+        var y=+prompt()
+        var r=+prompt()
+        var jl=Math.sqrt(x**2+y**2)
+        var jlsj=2*jl/50
+        var rssj=1.5*r
+
+        console.log(Math.ceil(jlsj+rssj))
     }
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/20" type="1">
+  var h = +prompt()
+  var count = 1, s = 0, sum = 0
+  while (count <= 10) {
+    s = h + h / 2
+    h = h / 2
+    sum = sum + s
+    count++
+  }
+  console.log((sum - h).toFixed(4), h.toFixed(7))
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/21" type="1">
+    var N=+prompt()
+    while(N>1){
+        if(N==1){
+            console.log('End')
+        }
+        if(N%2!==0){
+            console.log(N+'*3+1='+(N*3+1))
+            N=N*3+1
+    }
+        else if(N%2==0){
+            console.log(N+'/2='+(N/2))
+            N=N/2
+    }
+        
+}
+</script>
 
-<script id="" type=""></script>
+<script id="ch0105/22" type="">
+     var count = 1, sum = 0, calc = 0, save = 0
+  while (count <= 12) {
+    var p = +prompt("")
+    calc = calc + 300 - p
+    if (calc < 0) {
+      console.log(-count)
+      break
+    }
+    if (calc / 100 >= 1) {
+      save = 100 * (Math.floor(calc / 100))
+      calc = calc - save
+      sum = sum + save
+    }
+    if (count == 12) {
+      sum = sum * (1 + 0.2) + calc
+      console.log(sum)
+      break
+    }
+    count++
+  }
+</script>
 
-<script id="" type=""></script>
-
-<script id="" type=""></script>
+<script id="ch0105/23" type=""></script>
 
 <script id="" type=""></script>
 
