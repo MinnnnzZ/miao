@@ -1033,7 +1033,7 @@
 <script id="ch0105/34" type="1">
     var n=+prompt()
     var sum=0
-    for(let a=1;a<=n;a++){
+    for(var a=1;a<=n;a++){
         var sun=1
         for(var j=1;j<=a;j++){
             sun=sun*j
@@ -1116,12 +1116,58 @@
     console.log(sum)
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/41" type="1">
+     var L = +prompt()
+     var R = +prompt()
+     var sum = 0
+
+     for (var a = L; a <= R ; a++) {
+          var num = a
+          while(true){
+          if (num == 0) {
+              break
+      }
+          else if (num % 10 == 2){
+              sum ++
+      }
+      num = Math.trunc(num / 10)
+    }
+  }
+
+  console.log(sum);
+</script>
 
 <script id="" type=""></script>
 
 <script id="" type=""></script>
 
-<script id="" type=""></script>
+<script id="ch0105/44" type="1">
+   var n = +prompt('N')
+   var content = 0
 
-<script id="" type=""></script>
+ for (var i = 1; ; i++) {
+    if (i >= 8 ? ((i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) ? 1 : 0 ) : ((i == 1 || i == 4 || i == 6) ? 1 : 0)) continue
+    content ++
+    if (content == n) {
+      console.log(i) 
+      break
+    }
+  }
+</script>
+
+<script id="ch0105/45" type="1">
+  var n = +prompt('N')
+  var sum = 0
+  var days = 0
+  for (var i = 1; i <= n; i++) {
+    for (var j = 1; j <= i; j++) {
+      sum += i
+      days ++
+      if(days == n) 
+      break
+    }
+    if(days == n) 
+    break
+  }
+  console.log(sum);
+</script>
