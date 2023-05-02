@@ -919,7 +919,7 @@
     console.log(result)
 </script>
 
-<script id="ch0105/27" type="">
+<script id="ch0105/27" type="1">
     var k=+prompt()
     var S=0
     for(var n=1 ;;n++){
@@ -1087,8 +1087,19 @@
   console.log(n);
 </script>
 
-<script id="ch0105/38" type="?">
-
+<script id="ch0105/38" type="1">
+    var e=+prompt()
+    for(var i=0;i<t;i++){
+        var n=+prompt()
+        var e=n
+        for(var j=0;j<=n;j++){
+            var c =+prompt()
+            if(j==n){
+               consolelog(c*e)
+               e--
+       }
+    }
+}
 </script>
 
 <script id="ch0105/39" type="1">
@@ -1142,9 +1153,27 @@
   console.log(sum);
 </script>
 
-<script id="" type=""></script>
+<script id="ch0105/42" type="1">
+    var h=+prompt()
+    var w=+prompt()
+    var char=prompt()
+    var fill=+prompt()
+    var result=''
 
-<script id="" type=""></script>
+    for(var i = 0;i < h;i++){
+        for(var j = 0;j < w;j++){
+            if(j == 0||j == w - 1||i == 0||i == h - 1){
+                result += char
+            }else{
+                result += ' '
+            }
+        }
+        result+='\n'
+    }
+    console.log(result)
+</script>
+
+<script id="ch0105/43" type="1"></script>
 
 <script id="ch0105/44" type="1">
    var n = +prompt('N')
