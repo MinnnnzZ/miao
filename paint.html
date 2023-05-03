@@ -105,8 +105,27 @@
         dot(x,y,'red')
       }
       //* 画一条跨越画布左上角和右下角的对角线
-      
+
+      function line(x1,y1,x2,y2,color){
+        var dx=x2-x1
+        var dy=y2-y1
+        var stepy=dy/dx
+
+        var y=y1
+        var ty=0
+
+        for (var x = x1; x <= x2; x++) {
+          dot(x, y, color)
+          ty += dy
+          if (ty >= dx) {
+            y++
+            ty -= dx
+          }
+        }
+      }
+      line(0,0,500,400)
       //* 画一个空心矩形
+      
       //* 画一个实心矩形
       //* 画两个空心的圆，圆心在画布中心：
         //* 一个半径为50像素
