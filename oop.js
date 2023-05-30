@@ -7,7 +7,7 @@ class Vector{
     plus(vector) {
         var x = this.x + vector.x
         var y = this.y + vector.y
-        return new Vector
+        return new Vector(x, y)
     }
     minus(vector) {
         var x = this.x - vector.x
@@ -26,4 +26,5 @@ class Complex{
         this.imag = imag
     }
     
+
 }
