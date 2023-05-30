@@ -178,3 +178,69 @@ class LinkedList {
     }
 }
 
+
+class MyMap {
+    constructor() {
+        this.keys = []
+        this.vals = []
+    }
+    set(key, val) {
+        var keyIdx = this.keys.indexOf(key)
+        if (keyIdx !== -1) {
+            this.vals[keyIdx] = val
+        } else {
+            this.keys.push(key)
+            this.vals.push(val)
+        }
+    }
+    get(key) {
+        var keyIdx = this.keys.indexOf(key)
+        if (keyIdx >= 0) {
+            return this.vals[keyIdx]
+        }
+    }
+    has(key) {
+        if (this.keys.includes(key)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    delete(key) {
+        var keyIdx = this.keys.indexOf(key)
+        if (keyIdx >= 0) {
+            this.keys.splice(keyIdx, 1)
+            this.vals.splice(keyIdx, 1)
+            return true
+        }
+        return false
+    }
+    get size() {
+        return this.keys.length
+    }
+}
+
+
+class MySet{
+    elements = []
+    constructor() {
+        this.elements = []
+    }
+    add(val) {
+        if (!this.has(val)) {
+            this.elements.push(val)
+        }
+    }
+    delete(val) {
+        if (this.has(val)) {
+            var idx = this.elements.indexOf(val)
+            this.elements.splice(idx, 1)
+        }
+    }
+    has(val) {
+        return this.elements.includes(val)
+    }
+    get size() {
+        return this.elements.length
+    }
+}
