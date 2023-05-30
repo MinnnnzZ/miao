@@ -74,6 +74,23 @@ class Complex{
     }
 }
 
+
+class Queue {
+    constructor() {
+        this.vals = []
+    }
+    add(val) {
+        this.vals.push(val)
+    }
+    pop() {
+        return this.vals.shift()
+    }
+    get size() {
+        return this.vals.length
+    }
+}
+
+
 class LinkedList {
     constructor() {
         this.head = null
@@ -127,3 +144,4 @@ class LinkedList {
         return l
     }
 }
+
