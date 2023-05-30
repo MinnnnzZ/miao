@@ -73,3 +73,57 @@ class Complex{
         return new Complex(real, imag)
     }
 }
+
+class LinkedList {
+    constructor() {
+        this.head = null
+        this.tail = null
+    }
+    append(val) {
+        var node = {
+            val: val,
+            next: null
+        }
+        if (this.head == null) {
+            this.head = this.tail = node
+            return
+        } else {
+            this.tail.next = node
+            this.tail = node
+            return
+        }
+    }
+    prepend(val) {
+        var node = {
+            val: val,
+            next: null
+        }
+        if (this.head == null) {
+            this.head = this.tail = node
+            return
+        } else {
+            node.next = this.head
+            this.head = node
+            return
+        }
+    }
+    at(idx) {
+        if (this.head === this.tail === null) return null
+        var p = this.head
+        var count = 0
+        while (count < idx) {
+            p = p.next
+            count++
+        }
+        return p.val
+    }
+    get size() {
+        var p = this.head
+        var l = 0
+        while (p) {
+            l++
+            p = p.next
+        }
+        return l
+    }
+}
