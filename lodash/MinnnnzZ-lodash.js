@@ -1,4 +1,4 @@
-var MinnnnzZ = {
+var minnnnzz = {
 
 
     compact: function (array, size) {
