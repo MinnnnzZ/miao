@@ -20,12 +20,13 @@ var minnnnzz = {
         return result
     },
     
-    fill: funciton (array, value, start = 0, end = array.length){
+    fill: function (array, value, start = 0, end = array.length){
         for (var i = start; i < end; i++){
             array[i] = value
         }
         return array
     },
-    
-    
+
+
+
 }
