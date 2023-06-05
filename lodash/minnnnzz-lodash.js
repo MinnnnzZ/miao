@@ -27,9 +27,7 @@ var minnnnzz = {
         return array
     },
     
-    drop: function(array, n) {
-        
-    }
+    
    
     
 }
