@@ -9,7 +9,7 @@ var minnnnzz = {
             }
         }
         return result
-    }
+    },
 
     
     chunk: function (array, size) {
@@ -17,7 +17,7 @@ var minnnnzz = {
         for (var i = 0; i < array.length; i += size){
             result.push(array.slice(i, i + size))
         }
-    }
+    },
 
     
 }
