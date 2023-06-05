@@ -9,7 +9,7 @@ var minnnnzz = {
             }
         }
         return result
-    }
+    },
 
     
     chunk: function (array, size) {
