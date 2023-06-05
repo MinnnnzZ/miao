@@ -31,13 +31,7 @@ var minnnnzz = {
         return array.slice(n)
     },
 
-    findIndex: function (array) {
-        for (var i = 0; i < this.length; i++){
-            if (array(this[i], i)) {
-                return i
-            }
-        }
-    }
+    findIndex: function (array) {}
 
 
 
