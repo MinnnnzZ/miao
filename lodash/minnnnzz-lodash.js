@@ -27,9 +27,11 @@ var minnnnzz = {
         return array
     },
 
-    drop: function (array, n) {
-        
-    }
+    drop: function (array, n = 1) {
+        return array.slice(n)
+    },
+
+    
 
 
 
