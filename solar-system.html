@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        div{
+            position: relative;
+            border:1px solid;
+            width:400px;
+            height: 400px;
+            
+        }
+        ul{
+            position: absolute;
+            width:100px;
+            height:100px;
+            border-radius:1000px;
+            background-color: red;
+            margin:150px;
+        }
+        span{
+            position: absolute;
+            width:100px;
+            height:100px;
+            margin:150px;
+        }
+        a{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius:1000px;
+            background-color: aqua;
+            margin: 25px;
+        }
+        p{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 1000px;
+            background-color: rgb(111, 111, 117);
+            margin:40px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+        </ul>
+        <span>
+            <a></a>
+            <p></p>
+        </span>
+    </div>
+    <script>
+    var 地球 = document.querySelector("span");
+    var angle = 0, lastTime = null;
+    function animate(time) {
+      time = Date.now() - 1000
+      if (lastTime != null)
+        angle += (time - lastTime) * 0.001;
+
+      lastTime = time;
+
+      地球.style.top = (Math.sin(angle) * 150) + "px";
+      地球.style.left = (Math.cos(angle) * 150) + "px";
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    var 月球 = document.querySelector("p");
+    var angle = 0 , lastTime = null;
+    function animate2(time) {
+      time = Date.now()
+      if (lastTime != null)
+        angle += (time - lastTime) * 0.001;
+
+      lastTime = time;
+
+      月球.style.top = (Math.sin(angle) * 50) + "px";
+      月球.style.left = (Math.cos(angle) * 50) + "px";
+
+      requestAnimationFrame(animate2);
+    }
+
+    requestAnimationFrame(animate2);
+    </script>
+</body>
+</html>
