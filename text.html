@@ -1,0 +1,24 @@
+<script>
+    function getElementsByTagName(tagName) {
+      let result = [];
+
+      function dfs(node) {
+        let children = node.children;
+        for (let i = 0; i < children.length; i++) {
+          if (children[i].tagName === tagName.toUpperCase()) {
+            result.push(children[i]);
+          }
+          if (children[i].children) {
+            dfs(children[i]);
+          }
+        }
+      }
+
+      dfs(document);
+
+      return result;
+    }
+
+
+
+</script>
