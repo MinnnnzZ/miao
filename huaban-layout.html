@@ -357,40 +357,34 @@
         "height": 1170
       }
     ]
-    function loadImg () {
-      let app = document.querySelector('.app')
-      app.innerHTML = ''
-      let columnCount = Math.floor((window.innerWidth - 120) / 200)
-      columnCount = columnCount < 3 ? 3 : columnCount
-      app.style.width = `${columnCount * 200 + (columnCount - 1) * 20}px`
+    function loadImg() {
+      const app = document.querySelector('.app');
+      app.innerHTML = '';
+      const columnCount = Math.max(3, Math.floor((window.innerWidth - 120) / 220));
+      app.style.width = `${columnCount * 220 - 20}px`;
 
-      for(let i = 0;i < columnCount;i++){
-        app.append(document.createElement('div'))
-      }
+      const divs = Array.from({ length: columnCount }, () => {
+        const div = document.createElement('div');
+        app.appendChild(div);
+        return div;
+      });
 
-      let divs = [...document.querySelectorAll('.app div')]
+  for (const item of imgs) {
+    const div = divs.reduce((minDiv, currDiv) => {
+      return minDiv.offsetHeight > currDiv.offsetHeight ? currDiv : minDiv;
+    });
 
-      for (let item of imgs){
-        let div = divs.reduce((minDiv,item) => {
-          if(minDiv.offsetHeight > item.offsetHeight){
-            return item
-          }else{
-            return minDiv
-          }
-        })
+    const img = new Image();
+    img.src = item.fullUrl;
+    img.height = item.height / item.width * 200;
+    img.loading = 'lazy';
+    div.appendChild(img);
+  }
+}
 
-        let img = document.createElement('img')
-        img.src = item.fullUrl
-        img.height = item.height / item.width * 200
-        img.loading = 'lazy'
-        div.append(img)
-      }
+loadImg();
 
-    }
-
-    loadImg()
-
-    window.onresize = loadImg
+window.onresize = loadImg;
   </script>
 </body>
 </html>
