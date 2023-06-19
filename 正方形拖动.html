@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            overscroll-behavior: none;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+
+        .red {
+            background-color: red;
+            top: 50px;
+            left: 50px;
+        }
+
+        .green {
+            background-color: green;
+            top: 100px;
+            left: 100px;
+        }
+
+        .blue {
+            background-color: blue;
+            top: 150px;
+            left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="square red"></div>
+    <div class="square green"></div>
+    <div class="square blue"></div>
+    <script>
+        const squares = document.querySelectorAll('.square');
+        let currentSquare = null;
+        let zIndex = 1;
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+        const squareWidth = 100;
+        const squareHeight = 100;
+        const snapDistance = 20;
+
+        function handleMouseDown(e) {
+            currentSquare = e.target;
+            zIndex++;
+            currentSquare.style.zIndex = zIndex;
+        }
+
+        function handleMouseMove(e) {
+            if (currentSquare) {
+                const x = e.clientX - currentSquare.offsetWidth / 2;
+                const y = e.clientY - currentSquare.offsetHeight / 2;
+                const left = Math.max(0, Math.min(x, windowWidth - squareWidth));
+                const top = Math.max(0, Math.min(y, windowHeight - squareHeight));
+                currentSquare.style.left = left + 'px';
+                currentSquare.style.top = top + 'px';
+                snapToEdges(currentSquare, left, top);
+            }
+        }
+
+        function handleMouseUp(e) {
+            currentSquare = null;
+        }
+
+        function snapToEdges(square, left, top) {
+            if (left < snapDistance) {
+                square.style.left = '0px';
+            } else if (left + squareWidth > windowWidth - snapDistance) {
+                square.style.left = windowWidth - squareWidth + 'px';
+            }
+            if (top < snapDistance) {
+                square.style.top = '0px';
+            } else if (top + squareHeight > windowHeight - snapDistance) {
+                square.style.top = windowHeight - squareHeight + 'px';
+            }
+        }
+
+        function updateWindowSize() {
+            windowWidth = window.innerWidth;
+            windowHeight = window.innerHeight;
+        }
+
+        window.addEventListener('resize', updateWindowSize);
+
+        squares.forEach(square => {
+            square.addEventListener('mousedown', handleMouseDown);
+            square.addEventListener('mousemove', handleMouseMove);
+            square.addEventListener('mouseup', handleMouseUp);
+        });
+    </script>
+</body>
+
+</html>
