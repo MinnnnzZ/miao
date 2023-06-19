@@ -8,6 +8,8 @@
     <style>
         * {
             overscroll-behavior: none;
+            margin: 0;
+            padding: 0;
         }
 
         .square {
@@ -33,6 +35,14 @@
             top: 150px;
             left: 150px;
         }
+
+        .box {
+            width: 10px;
+            height: 10px;
+            background: rgb(49, 226, 230);
+            position: absolute;
+            border-radius: 1000px;
+        }
     </style>
 </head>
 
@@ -40,6 +50,15 @@
     <div class="square red"></div>
     <div class="square green"></div>
     <div class="square blue"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
     <script>
         const squares = document.querySelectorAll('.square');
         let currentSquare = null;
@@ -97,6 +116,28 @@
             square.addEventListener('mousemove', handleMouseMove);
             square.addEventListener('mouseup', handleMouseUp);
         });
+
+        var aBox = document.getElementsByClassName("box");
+        var timer;
+        document.onmousemove = function (ev) {
+            clearInterval(timer);
+            var ev = ev || window.event;
+
+            aBox[0].style.top = ev.pageY + "px";
+            aBox[0].style.left = ev.pageX + "px";
+
+            for (var i = aBox.length - 1; i > 0; i--) {
+                aBox[i].style.top = aBox[i - 1].style.top;
+                aBox[i].style.left = aBox[i - 1].style.left;
+            }
+
+            timer = setInterval(function () {
+                for (var i = aBox.length - 1; i > 0; i--) {
+                    aBox[i].style.top = aBox[i - 1].style.top;
+                    aBox[i].style.left = aBox[i - 1].style.left;
+                }
+            }, 10)
+        }
     </script>
 </body>
 
