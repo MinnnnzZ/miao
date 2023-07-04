@@ -1,71 +1,71 @@
 <script>
-    function parseJSON(str){
-        var i = 0
-        return parseValue()
+  function parseJSON(str) {
+    var i = 0
+    return parseValue()
 
 
-        function parseValue(){
-            var char = str[i]
-            if(char == '{'){
-                return parseObject()
-            }
-            if(char == '['){
-                return parseArray()
-            }
-            if(char == '"'){
-                return parseString()
-            }
-            if(char == 't'){
-                var token = str.slice(i , i + 4)
-                if(token == 'true'){
-                    i += 4
-                    return true
-                }else{
-                    throw new SyntaxError(`Error`)
-                }
-            }
-            if(char == 'f'){
-                var token = str.slice(i , i + 5)
-                if(token == 'false'){
-                    i += 5
-                    return false
-                } else {
-                    throw new SyntaxError(`Error`)
-                }
-            }
-            if(char == 'n'){
-                var token = str.slice(i, i + 4)
-                if(token == 'null'){
-                    i += 4
-                    return true
-                } else {
-                    throw new SyntaxError('Error')
-                }
-            }
-            return parseNumber()
+    function parseValue() {
+      var char = str[i]
+      if (char == '{') {
+        return parseObject()
+      }
+      if (char == '[') {
+        return parseArray()
+      }
+      if (char == '"') {
+        return parseString()
+      }
+      if (char == 't') {
+        var token = str.slice(i, i + 4)
+        if (token == 'true') {
+          i += 4
+          return true
+        } else {
+          throw new SyntaxError(`Error`)
         }
-
-        function parseNumber(){
-            var start = i
-            while(str[i] >= '0' && str[i] <= '9'){
-                i++
-            }
-            return Number(str.slice(start,i))
+      }
+      if (char == 'f') {
+        var token = str.slice(i, i + 5)
+        if (token == 'false') {
+          i += 5
+          return false
+        } else {
+          throw new SyntaxError(`Error`)
         }
-
-        function parseString(){
-            i++
-            var start = i
-            while(str[i] !== '"' && i < str.length){
-                i++
-            }
-            if(str[i] !== '"'){
-                throw new SyntaxError(`ErrorString`)
-            }
-            var end = i
-            i++
-            return str.slice(start, end)
+      }
+      if (char == 'n') {
+        var token = str.slice(i, i + 4)
+        if (token == 'null') {
+          i += 4
+          return true
+        } else {
+          throw new SyntaxError('Error')
         }
+      }
+      return parseNumber()
+    }
+
+    function parseNumber() {
+      var start = i
+      while (str[i] >= '0' && str[i] <= '9') {
+        i++
+      }
+      return Number(str.slice(start, i))
+    }
+
+    function parseString() {
+      i++
+      var start = i
+      while (str[i] !== '"' && i < str.length) {
+        i++
+      }
+      if (str[i] !== '"') {
+        throw new SyntaxError(`ErrorString`)
+      }
+      var end = i
+      i++
+      return str.slice(start, end)
+    }
 
     function parseArray() {
       var result = []
@@ -75,12 +75,12 @@
         return result
       }
 
-      while(i < str.length) {
-        var value = parseValue() 
+      while (i < str.length) {
+        var value = parseValue()
         result.push(value)
         if (str[i] === ',') {
-          i++ 
-          continue
+          i++
+
         }
         if (str[i] === ']') {
           i++
@@ -92,14 +92,14 @@
 
     function parseObject() {
       var result = {}
-      i++ 
+      i++
       skipSpace()
       if (str[i] == '}') {
-        i++ 
+        i++
         return result
       }
 
-      while(i < str.length) {
+      while (i < str.length) {
         var name = parseString()
         skipSpace()
         i++
@@ -107,18 +107,18 @@
         var value = parseValue()
         result[name] = value
         if (str[i] === ',') {
-          i++ 
-          continue
+          i++
+
         }
         if (str[i] === '}') {
-          i++ 
+          i++
           break
         }
       }
       return result
     }
-    function skipSpace(){
-      while(str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r') {
+    function skipSpace() {
+      while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r') {
         i++
       }
       return
