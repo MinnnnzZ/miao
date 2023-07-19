@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #stage {
+      letter-spacing: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <pre id="stage"></pre>
+
+
+  <script>
+    class Snake {
+      constructor(width = 10, height = 10) {
+        this.width = width
+        this.height = height
+        this.world = new Array(height).fill(0).map(it => new Array(width).fill('.'))
+        this.score = 0
+
+        this.head = [width / 3 | 0, height / 3 | 0]
+        this.tail = this.head
+
+        var [x, y] = this.head
+        this.world[y][x] = '>' 
+
+        this.placeApple()
+      }
+
+      placeApple() {
+        while(true) {
+          var x = this.width * Math.random() | 0
+          var y = this.height * Math.random() | 0
+          if (this.world[y][x] == '.') {
+            this.world[y][x] = 'O'
+            return
+          }
+        }
+      }
+      judgeGameOver([x, y]) {
+        if (x < 0 || x >= this.width) {
+          return true
+        }
+        if (y < 0 || y >= this.height) {
+          return true
+        }
+        if (this.world[y][x] !== '.' && this.world[y][x] !== 'O') {
+          return true
+        }
+        return false
+      }
+      next() {
+        var [hx, hy] = this.head
+        var headDirection = this.world[hy][hx]
+        if (headDirection == '^') {
+          var [x, y] = [hx, hy - 1]
+        }
+        if (headDirection == 'v') {
+          var [x, y] = [hx, hy + 1]
+        }
+        if (headDirection == '<') {
+          var [x, y] = [hx - 1, hy]
+        }
+        if (headDirection == '>') {
+          var [x, y] = [hx + 1, hy]
+        }
+
+        if (this.judgeGameOver([x, y])) {
+          return 'GameOver'
+        }
+
+        this.world[y][x] = headDirection
+        this.head = [x, y]
+    }
+}
