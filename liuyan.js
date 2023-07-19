@@ -41,11 +41,8 @@ server.on('connection', conn => {
     }
 
     if (method == 'GET' && urlObj.pathname == '/') {
-
-      // 按照http协议的格式发回响应,注意响应头的每行有个回车
       conn.write('HTTP/1.1 200 OK\r\n')
       conn.write('Content-Type: text/html; charset=UTF-8\r\n')
-      // conn.write('Content-Length: 18\r\n')
       conn.write(`Date: ${new Date()}\r\n`)
       conn.write('\r\n')
       conn.write(`
