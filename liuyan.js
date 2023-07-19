@@ -29,11 +29,11 @@ server.on('connection', conn => {
     }
 
     if (method == 'POST' && urlObj.pathname == '/leave-message') {
+
       var params = new URLSearchParams(body)
       var name = params.get('name')
       var message = params.get('message')
-      message.push({ name, message })
-
+      messages.push({ name, message })
       conn.write('HTTP/1.1 302 Found\r\n')
       conn.write('Location: /\r\n')
       conn.end()
