@@ -33,6 +33,7 @@ server.on('connection', conn => {
       var name = params.get('name')
       var message = params.get('message')
       message.push({ name, message })
+
       conn.write('HTTP/1.1 302 Found\r\n')
       conn.write('Location: /\r\n')
       conn.end()
