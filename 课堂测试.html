@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://caolan.github.io/async/v3/scripts/async.js">
+        function asyncSeries(tasks, callback) {
+            var i = 0
+            startOneTask()
+            function startOneTask() {
+                if (i < task.length) {
+                    var task = task[i++]
+                    task(err => {
+                        if (err) {
+                            callback(err)
+                        } else {
+                            startOneTask()
+                        }
+                        starOneTask()
+                    })
+
+                } else {
+                    callback()
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

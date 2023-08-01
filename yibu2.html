@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>download</title>
+</head>
+
+<body>
+    <button onclick="downloadImages()">downloadImages</button>
+    <button onclick="downloadImages2()">downloadImages2</button>
+    <script>
+        function downloadImages() {
+            const urls = [
+                {
+                    "url": "photo-103450229.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-103450229.jpg",
+                    "width": 675,
+                    "height": 900
+                },
+                {
+                    "url": "photo-108273877.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-108273877.jpg",
+                    "width": 1170,
+                    "height": 780
+                },
+                {
+                    "url": "photo-115203323.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-115203323.jpg",
+                    "width": 1170,
+                    "height": 780
+                },
+            ];
+
+            const downloadPromises = urls.map(urlObj => {
+                const url = urlObj.fullUrl;
+                return fetch(url).then(() => {
+                    console.log(`图片 ${url} 已下载`);
+                });
+            });
+
+            Promise.all(downloadPromises).then(() => {
+                console.log('所有图片已下载');
+            });
+        }
+
+        function downloadImages2() {
+            const urls = [
+                {
+                    "url": "photo-103450229.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-103450229.jpg",
+                    "width": 675,
+                    "height": 900
+                },
+                {
+                    "url": "photo-108273877.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-108273877.jpg",
+                    "width": 1170,
+                    "height": 780
+                },
+                {
+                    "url": "photo-115203323.jpg",
+                    "fullUrl": "https://xieranmaya.github.io/images/cats/photo-115203323.jpg",
+                    "width": 1170,
+                    "height": 780
+                },
+            ];
+
+            const maxConcurrentDownloads = 3;
+            const downloadQueue = [];
+
+            urls.forEach((url, index) => {
+                const downloadPromise = fetch(url.fullUrl).then(() => {
+                    console.log(`第 ${index + 1} 张图片已下载`);
+                });
+
+                downloadQueue.push(downloadPromise);
+
+                if (downloadQueue.length >= maxConcurrentDownloads) {
+                    Promise.race(downloadQueue).then(() => {
+                        downloadQueue.shift();
+                    });
+                }
+            });
+
+            Promise.all(downloadQueue).then(() => {
+                console.log('所有图片已下载');
+            });
+        }
+    </script>
+</body>
