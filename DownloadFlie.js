@@ -2,7 +2,7 @@ const http = require('http'); // 导入http模块，用于创建服务器和处�
 const fs = require('fs'); // 导入fs模块，用于读取文件
 const path = require('path'); // 导入path模块，用于处理文件路径
 
-const port = 13000; // 设置服务器监听的端口号
+const port = 12000; // 设置服务器监听的端口号
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/favicon.ico') { // 处理收到的GET请求并且URL路径为/favicon.ico
