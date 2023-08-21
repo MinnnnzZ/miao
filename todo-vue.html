@@ -31,7 +31,7 @@
         }
     </style>
 
-
+items left
 </head>
 
 <body>
@@ -61,7 +61,7 @@
         </ul>
         <div>
             <!-- 显示剩余记事本数量 -->
-            <span><em>{{ todos.filter(it => !it.close).length }}</em> items left</span>
+            <span><em>{{ todos.filter(it => !it.close).length }}</em> 件事情未完成</span>
             <div class="visible-select">
                 <!-- 切换显示的记事本的类型(也就是切换看全部/未完成/已完成) -->
                 <label><input type="radio" @click="visibleTodos = $event.target.value" value="all" name="visible-todos"
