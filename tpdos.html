@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .completed input {
+      text-decoration: line-through;
+    }
+    input {
+      outline: none;
+      user-select: none;
+      border: 1px solid;
+    }
+    input:read-only {
+      border-color: white;
+    }
+    ul.visible-active li.completed {
+      display: none;
+    }
+    ul.visible-completed li:not(.completed) {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+
+  <script>
+    var todos = []
+    var visibleTodos = 'all'
+
+    function renderTodoHTML() {
+      return `
+        <h1>todos</h1>
+        <div>
+          <input type="checkbox" class="toggle-all" ${todos.every(it => it.completed) ? 'checked' : ''}>
+          <input type="text" id="todo-input" placeholder="what needs to be done?">
+        </div>
+        <ul id="todo-list" class="visible-${visibleTodos}">
+          ${
+            todos.map((todo, idx) => {
+              return `
+                <li class="${todo.completed ? 'completed' : 'active'}">
+                  <input data-index="${idx}" type="checkbox" ${todo.completed ? 'checked' : ''}>
+                  <input type="text" data-index="${idx}" readonly value="${todo.content}">
+                  <button class="delete" data-index="${idx}">&times;</button>
+                </li>
+              `
+            }).join('')
+          }
+        </ul>
+        <div>
+          <span><em>${todos.filter(it => !it.completed).length}</em> items left</span>
+          <div class="visible-select">
+            <label><input type="radio" value="all" name="visible-todos" ${visibleTodos == "all" ? 'checked': ''}> All</label>
+            <label><input type="radio" value="active" name="visible-todos" ${visibleTodos == "active" ? 'checked': ''}> Active</label>
+            <label><input type="radio" value="completed" name="visible-todos" ${visibleTodos == "completed" ? 'checked': ''}> Completed</label>
+          </div>
+          <button class="clear-completed" ${todos.some(it => it.completed) ? '' : 'hidden'}>Clear completed</button>
+        </div>
+      `
+    }
+
+
+    var container = document.querySelector('.container')
+
+    function updatePage() {
+      container.innerHTML = renderTodoHTML()
+    }
+    updatePage()
+
+    container.addEventListener('click', e => {
+      var target = e.target
+      if (target.matches('button.delete')) {
+        var index = target.dataset.index
+        todos.splice(index, 1)
+        updatePage()
+      } else if (target.matches('li input[type="checkbox"]')) {
+        var checked = target.checked
+        var index = target.dataset.index
+        todos[index].completed = checked
+        updatePage()
+      } else if (target.matches('input.toggle-all')) {
+        if (todos.every(it => it.completed)) {
+          todos.forEach(todo => {
+            todo.completed = false
+          })
+        } else {
+          todos.forEach(todo => {
+            todo.completed = true
+          })
+        }
+        updatePage()
+      } else if (target.matches('.clear-completed')) {
+        todos = todos.filter(todo => !todo.completed)
+        updatePage()
+      } else if (target.matches('input[type="radio"]')) {
+        visibleTodos = target.value
+        updatePage()
+      }
+    })
+
+    container.addEventListener('keyup', e => {
+      if (e.target.matches('#todo-input')) {
+        if (e.key == 'Enter') {
+          var text = e.target.value.trim()
+          if (text) {
+            todos.push({
+              content: text,
+              completed: false,
+            })
+            updatePage()
+          }
+        }
+      }
+    })
+    container.addEventListener('dblclick', e => {
+      if (e.target.matches('li input[type="text"]')) {
+        e.target.readOnly = false
+      }
+    })
+
+    container.addEventListener('focusout', e => {
+      if (e.target.matches('li input')) {
+        var index = e.target.dataset.index
+        todos[index].content = e.target.value.trim()
+        e.target.readOnly = true
+      }
+    })
+
+    container.addEventListener('keyup', e => {
+      if (e.key == 'Enter' && e.target.matches('li input')) {
+        var index = e.target.dataset.index
+        todos[index].content = e.target.value.trim()
+        e.target.readOnly = true
+      } else if (e.key == 'Escape') {
+        updatePage()
+      }
+    })
+
+    
+  </script>
+</body>
+</html>
+以上代码每一句加上注释再把代码给我
+08月21日 15:47 会话ID:(1121802)
+
+    
+html
+插入代码
+复制代码
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <style>
+    /* 样式定义开始 */
+    .completed input {
+      text-decoration: line-through; /* 已完成的任务文本添加删除线 */
+    }
+    input {
+      outline: none; /* 移除输入框的外边框 */
+      user-select: none; /* 禁止文本选择 */
+      border: 1px solid; /* 添加1像素的实线边框 */
+    }
+    input:read-only {
+      border-color: white; /* 只读输入框的边框颜色设为白色 */
+    }
+    ul.visible-active li.completed {
+      display: none; /* 在展示"Active"任务时，已完成的任务项隐藏 */
+    }
+    ul.visible-completed li:not(.completed) {
+      display: none; /* 在展示"Completed"任务时，未完成的任务项隐藏 */
+    }
+    /* 样式定义结束 */
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+
+  <script>
+    // 待办事项数据
+    var todos = [];
+    // 当前显示的待办事项类型
+    var visibleTodos = 'all';
+
+    // 生成待办事项列表的HTML代码
+    function renderTodoHTML() {
+      return `
+        <h1>todos</h1>
+        <div>
+          <input type="checkbox" class="toggle-all" ${todos.every(it => it.completed) ? 'checked' : ''}>
+          <input type="text" id="todo-input" placeholder="what needs to be done?">
+        </div>
+        <ul id="todo-list" class="visible-${visibleTodos}">
+          ${
+            todos.map((todo, idx) => {
+              return `
+                <li class="${todo.completed ? 'completed' : 'active'}">
+                  <input data-index="${idx}" type="checkbox" ${todo.completed ? 'checked' : ''}>
+                  <input type="text" data-index="${idx}" readonly value="${todo.content}">
+                  <button class="delete" data-index="${idx}">&times;</button>
+                </li>
+              `;
+            }).join('')
+          }
+        </ul>
+        <div>
+          <span><em>${todos.filter(it => !it.completed).length}</em> items left</span>
+          <div class="visible-select">
+            <label><input type="radio" value="all" name="visible-todos" ${visibleTodos == "all" ? 'checked': ''}> All</label>
+            <label><input type="radio" value="active" name="visible-todos" ${visibleTodos == "active" ? 'checked': ''}> Active</label>
+            <label><input type="radio" value="completed" name="visible-todos" ${visibleTodos == "completed" ? 'checked': ''}> Completed</label>
+          </div>
+          <button class="clear-completed" ${todos.some(it => it.completed) ? '' : 'hidden'}>Clear completed</button>
+        </div>
+      `;
+    }
+
+    // 获取容器元素
+    var container = document.querySelector('.container');
+
+    // 更新页面内容
+    function updatePage() {
+      container.innerHTML = renderTodoHTML();
+    }
+    updatePage();
+
+    // 添加事件监听器
+    container.addEventListener('click', e => {
+      var target = e.target;
+      if (target.matches('button.delete')) {
+        var index = target.dataset.index;
+        todos.splice(index, 1);
+        updatePage();
+      } else if (target.matches('li input[type="checkbox"]')) {
+        var checked = target.checked;
+        var index = target.dataset.index;
+        todos[index].completed = checked;
+        updatePage();
+      } else if (target.matches('input.toggle-all')) {
+        // 切换所有待办事项的完成状态
+        if (todos.every(it => it.completed)) {
+          todos.forEach(todo => {
+            todo.completed = false;
+          });
+        } else {
+          todos.forEach(todo => {
+            todo.completed = true;
+          });
+        }
+        updatePage();
+      } else if (target.matches('.clear-completed')) {
+        // 清除所有已完成的待办事项
+        todos = todos.filter(todo => !todo.completed);
+        updatePage();
+      } else if (target.matches('input[type="radio"]')) {
+        // 切换显示的待办事项类型
+        visibleTodos = target.value;
+        updatePage();
+      }
+    });
+
+    // 添加事件监听器，响应输入框回车事件
+    container.addEventListener('keyup', e => {
+      if (e.target.matches('#todo-input')) {
+        if (e.key == 'Enter') {
+          var text = e.target.value.trim();
+          if (text) {
+            todos.push({
+              content: text,
+              completed: false,
+            });
+            updatePage();
+          }
+        }
+      }
+    });
+
+    // 添加事件监听器，双击编辑任务项
+    container.addEventListener('dblclick', e => {
+      if (e.target.matches('li input[type="text"]')) {
+        e.target.readOnly = false;
+      }
+    });
+
+    // 添加事件监听器，失去焦点保存编辑内容
+    container.addEventListener('focusout', e => {
+      if (e.target.matches('li input')) {
+        var index = e.target.dataset.index;
+        todos[index].content = e.target.value.trim();
+        e.target.readOnly = true;
+      }
+    });
+
+    // 添加事件监听器，响应输入框回车或Esc键取消编辑
+    container.addEventListener('keyup', e => {
+      if (e.key == 'Enter' && e.target.matches('li input')) {
+        var index = e.target.dataset.index;
+        todos[index].content = e.target.value.trim();
+        e.target.readOnly = true;
+      } else if (e.key == 'Escape') {
+        updatePage();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -668,6 +668,34 @@
     }
 
 
+    const server = express()
+    server.use((req,res,next)=>{
+      if(req.method == 'GET' && req.url == '/authors'){
+        res.redirect('/author')
+      }else{
+        next()
+      }
+    })
+
+    server.use((req,res,next)=> {
+      if(req.method == 'GET' && req.url == '/author'){
+        if(req.accepts('html')){
+          res.type('html').end('<h1>I am the author</h1>')
+        } else if(req.accepts('json')){
+          res.json({
+            name:'Marjin',
+          })
+        }else if (req.accepts('text')){
+          res.type('text').end('I am the author')
+        }else{
+          res.status(406).end('Not Acceptedable')
+        }
+      }else{
+        next()
+      }
+    })
+
+
 
   </script>
 </body>

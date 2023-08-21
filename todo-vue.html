@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .close {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        input {
+            outline: none;
+            user-select: none;
+            border: 1px solid;
+        }
+
+        input:read-only {
+            border-color: white;
+        }
+
+        ul.visible-open li.close {
+            display: none;
+        }
+
+        ul.visible-close li:not(.close) {
+            display: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container" id="app">
+        <!-- 待办事项列表 -->
+        <h1>todos</h1>
+        <div>
+            <!-- 全选和添加记事本的输入框 -->
+            <input type="checkbox" class="toggle-all" @click="toggleAll()"
+                :checked="todos.length && todos.every(it => it.close)">
+            <input type="text" @keyup.enter="addTodo($event)" placeholder="你还有什么事情未完成">
+        </div>
+        <ul id="todo-list" :class="`visible-${visibleTodos}`">
+            <!-- 遍历记事本列表 -->
+            <li :class="todo.close ? 'close' : 'open'" v-for="(todo, idx) of 计算出需要显示的(todos)">
+                <!-- 切换记事本完成状态 -->
+                <input data-index="0" type="checkbox" :checked="todo.close" @change="changeTodoState(idx)">
+                <!-- 显示记事本内容 -->
+                <span v-show="editIdx !== idx" @dblclick="edit(idx)">{{ todo.content }}</span>
+                <!-- 编辑记事本输入框 -->
+                <input @keyup.enter="todo.content = $event.target.value.trim(); editIdx = -1"
+                    @blur="todo.content = $event.target.value.trim(); editIdx = -1" @keyup.escape="editIdx = -1"
+                    v-show="editIdx == idx" type="text" :value="todo.content">
+                <!-- 删除记事本的按钮 -->
+                <button @click="deleteTodo(idx)">&times;</button>
+            </li>
+        </ul>
+        <div>
+            <!-- 显示剩余记事本数量 -->
+            <span><em>{{ todos.filter(it => !it.close).length }}</em> items left</span>
+            <div class="visible-select">
+                <!-- 切换显示的记事本的类型(也就是切换看全部/未完成/已完成) -->
+                <label><input type="radio" @click="visibleTodos = $event.target.value" value="all" name="visible-todos"
+                        checked> 所有事项</label>
+                <label><input type="radio" @click="visibleTodos = $event.target.value" value="open"
+                        name="visible-todos"> 未完成事项</label>
+                <label><input type="radio" @click="visibleTodos = $event.target.value" value="close"
+                        name="visible-todos"> 已完成事项</label>
+            </div>
+            <!-- 清除已完成记事本的按钮 -->
+            <button @click="clearclose()" v-show="todos.some(it => it.close)">Clear close</button>
+        </div>
+    </div>
+
+    <script src="./vue-2.7.14.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todos: JSON.parse(localStorage.getItem('todos')) ?? [],
+                visibleTodos: 'all',
+                // 记事本的索引
+                editIdx: -1,
+            },
+            // 使用 watch 监听 todos 字段的变化，方便实时保存到本地存储
+            watch: {
+                todos: {
+                    deep: true, // 深度监控，逐层遍历对象的属性
+                    handler: function () {
+                        localStorage.setItem('todos', JSON.stringify(this.todos));
+                    },
+                }
+            },
+            methods: {
+                // 编辑记事本
+                edit(idx) {
+                    this.editIdx = idx;
+                },
+                // 计算需要显示的记事本
+                计算出需要显示的() {
+                    if (this.visibleTodos == 'close') {
+                        return this.todos.filter(it => it.close);
+                    } else if (this.visibleTodos == 'open') {
+                        return this.todos.filter(it => !it.close);
+                    }
+                    return this.todos;
+                },
+                // 清除已完成的记事本
+                clearclose() {
+                    this.todos = this.todos.filter(it => !it.close);
+                },
+                // 添加新记事本
+                addTodo(e) {
+                    var text = e.target.value.trim();
+                    if (text) {
+                        this.todos.push({
+                            content: text,
+                            close: false,
+                        });
+                        e.target.value = ''; // 清空输入框
+                    }
+                },
+                // 删除记事本
+                deleteTodo(idx) {
+                    this.todos.splice(idx, 1);
+                },
+                // 改变记事本的状态
+                changeTodoState(idx) {
+                    this.todos[idx].close = !this.todos[idx].close;
+                },
+                // 切换所有记事本为完成状态
+                toggleAll() {
+                    if (this.todos.every(it => it.close)) {
+                        this.todos.forEach(it => {
+                            it.close = false;
+                        });
+                    } else {
+                        this.todos.forEach(it => {
+                            it.close = true;
+                        });
+                    }
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
