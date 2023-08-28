@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .页码 button.active {
+            font-weight: bold;
+            color: red;
+        }
+
+        .页码 button {
+            cursor: pointer;
+            width: 60px;
+            height: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="页码">
+            <button @click="去那个页面(1)" :disabled="当前页面 === 1">首页</button>
+            <button @click="去那个页面(当前页面 - 1)" :disabled="当前页面 === 1">上一页</button>
+            <span v-if="当前页面 > 5">...</span>
+            <button v-for="选中的页面 in 页码" :key="选中的页面" @click="去那个页面(选中的页面)" :class="{ active: 选中的页面 === 当前页面 }">
+                {{ 选中的页面 }}
+            </button>
+            <span v-if="页码[页码.length - 1] < 总页面">...</span>
+            <button @click="去那个页面(当前页面 + 1)" :disabled="当前页面 === 总页面">下一页</button>
+            <button @click="去那个页面(总页面)" :disabled="当前页面 === 总页面">末页</button>
+        </div>
+    </div>
+    
+
+    <script src="./vue-2.7.14.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                当前页面: 1,
+                总页面: 100,
+                显示的页面: [],
+            },
+            computed: {
+
+                页码() {
+                    let 周围的页面 = [];
+                    let 最大能显示的页面 = 8;
+
+
+                    let 开始页面 = Math.max(1, this.当前页面 - Math.floor(最大能显示的页面 / 2));
+                    let 结束页面 = Math.min(this.总页面, 开始页面 + 最大能显示的页面 - 1);
+
+                    开始页面 = Math.max(1, 结束页面 - 最大能显示的页面 + 1);
+
+                    for (let 选中的页面 = 开始页面; 选中的页面 <= 结束页面; 选中的页面++) {
+                        周围的页面.push(选中的页面);
+                    }
+
+                    return 周围的页面;
+                }
+            },
+            methods: {
+
+                去那个页面(选中的页面) {
+                    if (选中的页面 >= 1 && 选中的页面 <= this.总页面) {
+                        this.当前页面 = 选中的页面;
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

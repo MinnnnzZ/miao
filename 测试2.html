@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+    </div>
+
+
+    <script src="./vue-2.7.14.js"></script>
+    <script>
+        Vue.component('counter', {
+            props: {
+                // props里的一个字段声明组件的一个属性
+                start: {
+                    type: Number,
+                    default: 0,
+                },
+                step: {
+                    type: Number,
+                    default: 1,
+                },
+            },
+            template: `
+      <div>
+        <button @click = "dec">-</button>
+        {{count}}
+        <button @click = "inc">+</button>
+      </div>
+      `,
+            methods: {
+                inc() {
+                    this.count += this.step
+                    this.$emit('increase', this.count)
+                },
+                dec() {
+                    this.count -= this.step
+                    this.$emit('decrease', this.count)
+                }
+            },
+            data() {
+                return {
+                    count: this.start,
+                }
+            },
+
+        })
+
+        var app = new Vue({
+            el: '.container',
+            template: `
+          <div class="container">
+          <counter></counter>
+          <counter :start="114514"></counter>
+          <counter :start="100" :step="666"></counter>
+          <counter></counter>
+          <counter></counter>`,
+            methods: {
+                inc() {
+                    this.count += this.step
+                    this.$emit('increase', this.count)
+                },
+                dec() {
+                    this.count -= this.step
+                    this.$emit('decrease', this.count)
+                }
+            },
+            data() {
+                return {
+                    count: this.start,
+                }
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

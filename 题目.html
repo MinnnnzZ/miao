@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template>
+            <div>
+                <div v-for="(question, index) in questions" :key="index">
+                    <h3>{{ question.title }}</h3>
+                    <input type="template" v-model="question.answer" />
+                </div>
+                <button @click="submitAnswers">提交</button>
+            </div>
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    questions: [{ title: '题目1', answer: '' },
+                    { title: '题目2', answer: '' },
+                    { title: '题目3', answer: '' }]
+                };
+            },
+            mounted() {
+                this.获得答案();
+            },
+            methods: {
+                async 获得答案() {
+                    const 响应 = await fetch('http://damiao.tpddns.cn:560012/exam/10', {
+                        headers: {
+                            ck: 'login=s%3Aa596427791.fsqHkKm6cb6%2BwB6JvncxDbf7gDApGGX%2FMnKuQCgvYm0; sessionId=33400964662144816'
+                        }
+                    });
+                    const data = await 响应.json();
+                    this.questions = data;
+                },
+                async 提交答案() {
+                    const 响应 = await fetch('http://damiaotpddns.cn:60012/exam/10', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(this.questions)
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
