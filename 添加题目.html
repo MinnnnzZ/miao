@@ -1,14 +1,74 @@
-var questions = await fetch('http://damiao.tpddns.cn:560012/exam/10', {
-    headers: {
-        ck: 'login=s%3Aa596427791.fsqHkKm6cb6%2BwB6JvncxDbf7gDApGGX%2FMnKuQCgvYm0; sessionId=33400964662144816'
-    }
-}).then(response => response.json());
+<!DOCTYPE html>
+<html lang="en">
 
-// 这里的your_post_url应替换为实际的POST地址
-await fetch('我的题目', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(questions)
-});
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提交界面</title>
+  <script src="/vue-2.7.14.js"></script>
+  <script src="lodash.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul >
+      <!-- 遍历json -->
+      <li v-for="(item,idx) of items">
+        <!-- 展示问题 -->
+        <div class="showBox">
+          {{item.question}}
+        </div>
+
+        <div class="answerEditor">
+          <textarea @input="autosave(item)" v-model="item.answer" id="" cols="30" rows="10">
+          </textarea>
+          <!-- 最后修改时间 -->
+          <i>{{ new Date(item.lastModified).toLocaleString()}}</i>
+        </div>
+
+      </li>
+    </ul>
+    <button @click="submit">submit</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: "#app",
+
+      data: {
+        items: [],
+      },
+
+      methods: {
+        submit() {
+        //提交
+          console.log("submit.......")
+          fetch('http://10.3.3.3:33312/exam/11', {
+            method: 'post',
+            body: JSON.stringify(app.items)
+          })
+        },
+
+        //自动保存
+        autosave: _.debounce((item)=>{
+          console.log("submit.......")
+          item.lastModified = new Date().toJSON()
+          fetch('http://10.3.3.3:33312/exam/11', {
+            method: 'post',
+            body: JSON.stringify(app.items)
+          })
+        },2000)
+      },
+
+      mounted() {
+        //请求数据
+        fetch('http://10.3.3.3:33312/exam/11', {
+          headers: {
+            ck: document.cookie,
+          },
+        }).then(it => it.json())
+          .then(it => this.items = it)
+      }
+    })
+
+  </script>
+</body>
+</html>

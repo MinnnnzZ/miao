@@ -12,7 +12,7 @@
             <div>
                 <div v-for="(question, index) in questions" :key="index">
                     <h3>{{ question.title }}</h3>
-                    <input type="template" v-model="question.answer" />
+                    <textarea type="text" v-model="question.answer"></textarea>
                 </div>
                 <button @click="submitAnswers">提交</button>
             </div>
@@ -34,7 +34,7 @@
             },
             methods: {
                 async 获得答案() {
-                    const 响应 = await fetch('http://damiao.tpddns.cn:560012/exam/10', {
+                    const 响应 = await fetch('http://damiao.tpddns.cn:560012/exam/88', {
                         headers: {
                             ck: 传上了github暂时不写
                         }
@@ -43,7 +43,7 @@
                     this.questions = data;
                 },
                 async 提交答案() {
-                    const 响应 = await fetch('http://damiaotpddns.cn:60012/exam/10', {
+                    const 响应 = await fetch('http://damiaotpddns.cn:60012/exam/88', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
