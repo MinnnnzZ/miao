@@ -1,85 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
+<template>
     <div class="container">
-    </div>
-
-
-    <script src="./vue-2.7.14.js"></script>
-    <script>
-        Vue.component('counter', {
-            props: {
-                // props里的一个字段声明组件的一个属性
-                start: {
-                    type: Number,
-                    default: 0,
-                },
-                step: {
-                    type: Number,
-                    default: 1,
-                },
-            },
-            template: `
+      <h1>todos</h1>
       <div>
-        <button @click = "dec">-</button>
-        {{count}}
-        <button @click = "inc">+</button>
+        <input type="checkbox" class="toggle-all" v-model="allChecked" />
+        <input type="text" v-model="newTodo" @keyup.enter="addTodo" placeholder="你还有什么事情未完成" />
       </div>
-      `,
-            methods: {
-                inc() {
-                    this.count += this.step
-                    this.$emit('increase', this.count)
-                },
-                dec() {
-                    this.count -= this.step
-                    this.$emit('decrease', this.count)
-                }
-            },
-            data() {
-                return {
-                    count: this.start,
-                }
-            },
+      <ul :class="`visible-${visibleTodos}`">
+        <li :class="{ close: todo.close }" v-for="(todo, idx) of filteredTodos" :key="idx">
+          <input type="checkbox" v-model="todo.close" @change="changeTodoState(idx)" />
+          <span v-show="editIdx !== idx" @dblclick="edit(idx)">{{ todo.content }}</span>
+          <input v-show="editIdx === idx" type="text" v-model="todo.content" @blur="editIdx = -1" @keyup.enter="editIdx = -1" @keyup.esc="editIdx = -1" />
+          <button @click="deleteTodo(idx)">&times;</button>
+        </li>
+      </ul>
+      <div>
+        <span><em>{{ remainingCount }}</em> 件事情未完成</span>
+        <div class="visible-select">
+          <label><input type="radio" v-model="visibleTodos" value="all" name="visible-todos"> 所有事项</label>
+          <label><input type="radio" v-model="visibleTodos" value="open" name="visible-todos"> 未完成事项</label>
+          <label><input type="radio" v-model="visibleTodos" value="close" name="visible-todos"> 已完成事项</label>
+        </div>
+        <button @click="clearCompletedTodos" v-show="completedCount">删除已完成事项</button>
+      </div>
+    </div>
+  </template>
+  
+  <script setup>
 
-        })
-
-        var app = new Vue({
-            el: '.container',
-            template: `
-          <div class="container">
-          <counter></counter>
-          <counter :start="114514"></counter>
-          <counter :start="100" :step="666"></counter>
-          <counter></counter>
-          <counter></counter>`,
-            methods: {
-                inc() {
-                    this.count += this.step
-                    this.$emit('increase', this.count)
-                },
-                dec() {
-                    this.count -= this.step
-                    this.$emit('decrease', this.count)
-                }
-            },
-            data() {
-                return {
-                    count: this.start,
-                }
-            },
-
-        })
-    </script>
-
-</body>
-
-</html>
+  import { ref, computed } from 'vue';
+  
+  const todos = ref(JSON.parse(localStorage.getItem('todos')) || []);
+  const visibleTodos = ref('all');
+  const editIdx = ref(-1);
+  const newTodo = ref('');
+  
+  const allChecked = computed({
+    get() {
+      return todos.value.length > 0 && todos.value.every(todo => todo.close);
+    },
+    set(value) {
+      todos.value.forEach(todo => {
+        todo.close = value;
+      });
+    },
+  });
+  
+  const filteredTodos = computed(() => {
+    if (visibleTodos.value === 'close') {
+      return todos.value.filter(todo => todo.close);
+    } else if (visibleTodos.value === 'open') {
+      return todos.value.filter(todo => !todo.close);
+    }
+    return todos.value;
+  });
+  
+  const remainingCount = computed(() => {
+    return todos.value.filter(todo => !todo.close).length;
+  });
+  
+  const completedCount = computed(() => {
+    return todos.value.filter(todo => todo.close).length;
+  });
+  
+  function addTodo() {
+    const text = newTodo.value.trim();
+    if (text) {
+      todos.value.push({
+        content: text,
+        close: false,
+      });
+      newTodo.value = '';
+    }
+  }
+  
+  function deleteTodo(idx) {
+    todos.value.splice(idx, 1);
+  }
+  
+  function changeTodoState(idx) {
+    todos.value[idx].close = !todos.value[idx].close;
+  }
+  
+  function edit(idx) {
+    editIdx.value = idx;
+  }
+  
+  function clearCompletedTodos() {
+    todos.value = todos.value.filter(todo => !todo.close);
+  }
+  
+  // 监听todos变化，并使用localStorage保存数据
+  watch(todos, () => {
+    localStorage.setItem('todos', JSON.stringify(todos.value));
+  }, { deep: true });
+  </script>
+  
